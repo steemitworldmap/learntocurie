@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Learn to curie</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Dosis:400,700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="  https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.4/showdown.min.js
+"></script>
+    <script src="JS/index.js"></script>
+</head>
+
+<body>
+    <ul id="header" class="noselect">
+        <ul>
+        <li id="steemconnect"><img src="IMG/314485-64.png" alt="login"></li>
+        <li id="following" class="textHeader">Following</li>
+        <li id="curating" class="textHeader">Curating</li>
+        <li id="discovering" class="textHeader">Discovering</li>
+        <li id="filtermenu"><img src="IMG/2265317-64.png" alt="filter"></li>
+        </ul>
+    </ul>
+
+    <div id="postRelated">
+        <!--set vpPercentage with jquery-->
+        <div id="progressbarOuter" class="noselect">
+            <p id="vpText">VP: <span id="vpPercentage">80</span>%</p>
+            <div id="progressbarInner"></div>
+        </div>
+        <p class="noselect" id="lastPost">&#8629;</p>
+        <div id="postText">
+            <div id="postInfo">
+                <div id="authorImageDiv"><img id="authorImage" src="https://steemitimages.com/u/steemitworldmap/avatar" alt="author image" /></div>
+
+                <div id="postInfoTableDiv">
+                    <p id="infoP"><span id="howOld">32 minutes ago</span> by <span id="authorName">Steemitworldmap</span> (<span id="authorRep">55</span>)</p>
+                    <p id="infoP2"><span id="postSbd">$125.52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postUpvotes">▲1569</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postResteems">↪122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postComments">&#x1f4ac;156</span></p>
+                    <!--<table id="postInfoTable">
+                <tr>
+                    <th id="authorTh">Author</th>
+                    <th id="timeTh">time</th>
+                    <th>sbd</th>
+                    <th>upvotes</th>
+                    <th>comments</th>
+                </tr>
+                <tr>
+                    <td id="authorTh">Steemitworldmap</td>
+                    <td id="timeTh">3D:14h:21m</td>
+                    <td>$1.54</td>
+                    <td>156</td>
+                    <td>110</td>
+                </tr>
+            
+            </table>-->
+                </div>
+            </div>
+            <!--testing post under here-->
+            <div id="postBody">
+                <div>
+                    <!--href should be link to steemit?-->
+                    <h1 id="postTitle"><a href="https://steemit.com/traveldigest/@steemitworldmap/travel-digest-58" target="_blank">Travel Digest #58</a></h1>
+                    <h2>If you enjoy our work consider to:<br><br>- <a href="https://streemian.com/profile/curationtrail/trailing/939" rel="noopener">Follow the trail we just set up</a><br>- Delegate some SP to <a href="/@steemitworldmap">@steemitworldmap</a></h2><br> <strong>We only vote on the <a href="/trending/traveldigest"> #traveldigest</a> post and the posts featured in it, so you can be assured your vote will go to good content and well deserving Steemians!</strong><br>
+                    <p></p>
+                    <hr>
+                    <p><br>Welcome to the 58th edition of <a href="/trending/traveldigest"> #traveldigest</a>! Enjoy!<br> As always all posts featured here will be put on our <a href="http://www.steemitworldmap.com?editorsChoice" rel="noopener">Editors Choice Map</a>.</p>
+                    <p>Hey hey, I've done a bunch of "behind the screen"-fixes today and yesterday. Most notably, I've made <a href="http://www.steemitworldmap.com" rel="noopener">Steemitworldmap</a> cross browser compatible. If you would still experience issues using either Firefox or Edge, let me know!</p>
+                    <p>If you want to learn more about <a href="http://www.steemitworldmap.com" rel="noopener">Steemit Worldmap</a>, you can <a href="https://steemit.com/travel/@steemitworldmap/steemit-worldmap">check the introduction post</a> or check the FAQ section on <a href="http://www.steemitworldmap.com" rel="noopener">the website</a>!</p>
+                    <hr>
+                    <p><strong><a href="https://steemit.com/photography/@philippbuxbaum/florianopolis-the-magic-island">#1 Florianópolis - The Magic Island</a></strong></p>
+                    <p>@philippbuxbaum takes us to the island of Florianópolis in Brazil. We get an extended tour through what indeed seems to be a magic island! From the city onto a little fisher village with one stunning beach after the other thrown in between. This post is seriously amazing, with good information and incredible imagery!</p>
+                    <p><sub>Steemit Worldmap Links:<br> <a href="http://steemitworldmap.com?author=philippbuxbaum" rel="noopener">Author Map</a>, <a href="http://steemitworldmap.com?post=florianopolis-the-magic-island" rel="noopener">Post Map</a></sub><br> </p>
+                    <center><a href="https://steemit.com/photography/@philippbuxbaum/florianopolis-the-magic-island"><img src="https://steemitimages.com/DQmUhJWVN8sxRoonLLcZ1WUJvcxzACsUeMP7xnHmoEFrZg5/Floripa-1.jpg" alt="#1 Florianópolis - The Magic Island"></a></center>
+                    <p></p>
+                    <hr>
+                    <p><strong><a href="https://steemit.com/travel/@ladybug146/canadian-rockies-the-detour-via-jasper-day-3">#2 Canadian Rockies: The detour via Jasper</a></strong></p>
+                    <p>@ladybug146 takes us to Jasper National Park in Canada. We get a very personal blog here and really get to have the entire experience the way @ladybug146 had it. From icy mountain roads, to snow covered fields and herds of elk. This post has it all packaged up nicely. It's well written, personal and holds incredible images of the area.</p>
+                    <p><sub>Steemit Worldmap Links:<br> <a href="http://steemitworldmap.com?author=ladybug146" rel="noopener">Author Map</a>, <a href="http://steemitworldmap.com?post=canadian-rockies-the-detour-via-jasper-day-3" rel="noopener">Post Map</a></sub><br> </p>
+                    <center><a href="https://steemit.com/travel/@ladybug146/canadian-rockies-the-detour-via-jasper-day-3"><img src="https://steemitimages.com/DQmRPV32EJc1vuGq2vcXDMz3Xa7kPeNi5WLBATyFwF5Nzoe/canmore.jpg" alt="#2 Canadian Rockies: The detour via Jasper"></a></center>
+                    <p></p>
+                    <hr>
+                    <p><strong><a href="https://steemit.com/travel/@sniffbiff/4k-drone-footage-of-awesome-waterfall-in-switzerland-and-how-to-find-it-guide-my-no-1-highlight-in-canton-tessin">#3 Waterfall in Switzerland and How to Find It</a></strong></p>
+                    <p>@sniffbiff takes us to a waterfall in the Canton Tessin, Switzerland. I think travel-wise the 4k videos from @sniffbiff are some of the best I've seen, and in this post it's no different. It immediately drags you into the place and makes you want to go there yourself. Now, seeing as the waterfall requires a bit of a hike to get to, @sniffbiff explains us the route and adds some beautiful pictures from during the hike as well!</p>
+                    <p><sub>Steemit Worldmap Links:<br> <a href="http://steemitworldmap.com?author=sniffbiff" rel="noopener">Author Map</a>, <a href="http://steemitworldmap.com?post=4k-drone-footage-of-awesome-waterfall-in-switzerland-and-how-to-find-it-guide-my-no-1-highlight-in-canton-tessin" rel="noopener">Post Map</a></sub><br> </p>
+                    <center><a href="https://steemit.com/travel/@sniffbiff/4k-drone-footage-of-awesome-waterfall-in-switzerland-and-how-to-find-it-guide-my-no-1-highlight-in-canton-tessin"><img src="https://steemitimages.com/DQmcjbdP7ktB6D9R8sS9Fd16kWt1G55SYtQDZsuX9sJvkn4/2017-11-28_20h12_24.jpg" alt="#3 Waterfall in Switzerland and How to Find It"></a></center>
+                    <p></p>
+                    <hr>
+                    <p><strong>Honorable mentions</strong></p>
+                    <ul>
+                        <li><a href="https://steemit.com/vehiclephotography/@dejan.vuckovic/than-you-bicycle-riding-forbidden-trail-of-gosauseen-in-austria">Trail of Gosauseen, Austria</a> with <a href="/@dejan.vuckovic">@dejan.vuckovic</a></li>
+                        <li><a href="https://steemit.com/travel/@hanen/travel-and-leisure-2-my-trip-to-heybeliada-island">Heybeliada Island, Istanbul, Turkey</a> with <a href="/@hanen">@hanen</a></li>
+                        <li><a href="https://steemit.com/photography/@bella-volen-art/south-korea-imressions-3-the-city-of-suwon-and-palace-photography">Suwon, South Korea</a> with <a href="/@bella-volen-art">@bella-volen-art</a></li>
+                        <li><a href="https://steemit.com/travel/@amikphoto/nafplion-not-napoleon">Nafplion, Greece</a> with <a href="/@amikphoto">@amikphoto</a></li>
+                        <li><a href="https://steemit.com/nature/@minismallholding/the-waterfall-gully-to-mount-lofty-summit-hike">Adelaide, Australia</a> with <a href="/@minismallholding">@minismallholding</a></li>
+                        <li><a href="https://steemit.com/travel/@foilix/an-autumn-day-in-the-heart-of-bavaria">Bavaria, Germany</a> with <a href="/@foilix">@foilix</a></li>
+                        <li><a href="https://steemit.com/travel/@lostinhappiness/lost-in-happiness-best-spots-in-puglia-italy-video">Puglia, Italy</a> with <a href="/@lostinhappiness">@lostinhappiness</a></li>
+                        <li><a href="https://steemit.com/food/@positivesteem/of-peking-duck-and-duck-burger-the-traditional-and-the-contemporary">Restaurant, Bejing China</a> with <a href="/@positivesteem">@positivesteem</a></li>
+                        <li><a href="https://steemit.com/architecturalphotography/@pipurilla/notre-dame-des-sablons-church-aigues-mortes-gard-france-1-entry-to-architecturalphotography-by-juliank-notre-dame-des-sablons">Church, Aigues Mortes, France</a> with <a href="/@pipurilla">@pipurilla</a></li>
+                        <li><a href="https://steemit.com/mountains/@dacinka/a-walk-in-bulgaria-8-look-to-9-mountains">Siristynska Rudina, Bulgaria</a> with <a href="/@dacinka">@dacinka</a></li>
+                        <li><a href="https://steemit.com/travel/@inseasia/hanoi-attractions-15-ho-chi-minh-museum">Museum, Hanoi, Vietnam</a> with <a href="/@inseasia">@inseasia</a></li>
+                        <li><a href="https://steemit.com/food/@inseasia/today-s-lunch-a-set-lunch-at-al-fresco-s-in-district-2">Restaurant, Ho Chi Minh City, Vietnam</a> with <a href="/@inseasia">@inseasia</a></li>
+                        <li><a href="https://steemit.com/travel/@amikphoto/2000-year-long-construction-the-corinthian-canal">Corinthian Canal, Greece</a> with <a href="/@amikphoto">@amikphoto</a></li>
+                        <li><a href="https://steemit.com/travel/@extremejogging/travel-germany-konstanz">Konstanz, Germany</a> with <a href="/@extremejogging">@extremejogging</a></li>
+                        <li><a href="https://steemit.com/travel/@ablckbrd/photo-album-vol-viii-atimonan-zigzag-park-route-to-gumaca-quezon-2015">Quezon National Forest, Philippines</a> with <a href="/@ablckbrd">@ablckbrd</a></li>
+                        <li><a href="https://steemit.com/travel/@ladysnowhite/sremski-karlovci-a-fantastic-rustic-town-between-the-danube-river-and-the-mountain-of-fruska-gora">Sremski Karlovci, Serbia</a> with <a href="/@ladysnowhite">@ladysnowhite</a></li>
+                        <li><a href="https://steemit.com/travel/@coldsteem/church-of-saint-anne-jerusalem-israel">Church, Jerusalem, Israel</a> with <a href="/@coldsteem">@coldsteem</a></li>
+                        <li><a href="https://steemit.com/photography/@joythewanderer/brussels-winter-wonderland">Brussel, Belgium</a> with <a href="/@joythewanderer">@joythewanderer</a></li>
+                    </ul>
+                    <hr>
+                    <p><a href="http://www.steemitworldmap.com" rel="noopener"><img src="https://steemitimages.com/0x0/http://oi67.tinypic.com/httfrk.jpg" alt="Steemit worldmap"></a></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <ul id="curationTools" class="noselect">
+            <!--<li id="goPrev" class="arrow"><img src="IMG/arrowleft.png" alt="arrow"></li>-->
+            <li id="upvote" class="postAction">▲</li>
+            <li id="resteem" class="postAction">⮎</li>
+            <li id="comment" class="postAction">...</li>
+            <!--Update with + if not following, - if already following-->
+            <li id="follow" class="postAction">F<span id="followSpan"></span></li>
+            <!--Update with + if not curating, - if already curating-->
+            <li id="curate" class="postAction">C<span id="curateSpan"></span></li>
+            <li id="goNext" class="arrow">NEXT
+                <!--<img src="IMG/arrowright.png" alt="arrow">--></li>
+        </ul>
+
+        <!--Starting value needs to be set in filters too if not set 100-->
+        <div id="upvoteSliderDiv" class="noselect">
+            <p id="voteNow">▲</p><input id="upvoteSlider" type="range" min="1" max="100" step="1" value="100">
+            <p id="slidervalue">100%</p>
+        </div>
+        <div id="commentBox"></div>
+    </div>
+</body>
+
+</html>
