@@ -1,6 +1,21 @@
 $(document).ready(function () {
     addValues();
 
+    $("#steemconnect").on('click', function () {
+        $("#steemConnectDiv").stop().fadeIn(200);
+        $("#backgroundOverlay").stop().fadeIn();
+    });
+
+    $(document).mouseup(function (e) {
+        var container = $("#steemConnectDiv");
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.stop().fadeOut(200);
+            $("#backgroundOverlay").stop().fadeOut(200);
+        }
+    });
+
 });
 
 function changeMarkDownToHtml(a, b) {
@@ -40,7 +55,7 @@ function addValues() {
     - following
     - curating
     */
-    
+
     //set these depending on post
     var upvoted = false;
     var resteemed = false;
