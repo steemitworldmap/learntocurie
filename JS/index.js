@@ -2,8 +2,8 @@ $(document).ready(function () {
     addValues();
 
     $("#steemconnect").on('click', function () {
-        $("#steemConnectDiv").stop().fadeIn(200);
-        $("#backgroundOverlay").stop().fadeIn();
+        $("#steemConnectDiv").stop().fadeToggle(200);
+        $("#backgroundOverlay").stop().fadeToggle();
     });
 
     $(document).mouseup(function (e) {
