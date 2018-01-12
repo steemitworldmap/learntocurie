@@ -18,12 +18,16 @@ $(document).ready(function () {
                 profilePicSrc = JSON.parse(result.account.json_metadata)['profile']['profile_image'];
             }
             $("#loginProfile").attr("src",profilePicSrc);
+            $("#sc2Img").attr("src", profilePicSrc);
+            $("#loginProfile").css("width", "100%");
         });
         $("#loginButton").hide();
         
     } else {
         $("#logoutButton").hide();
-        $("#loginProfile").attr("src", "IMG/314485-64.png");
+        $("#loginProfile").attr("src", "IMG/sc2.png");
+        $("#loginProfile").css("width", "65%");
+        $("#sc2Img").attr("src", "IMG/sc2.png");
     };
 
     $("#loginButton").on('click', function () {
@@ -47,6 +51,7 @@ $(document).ready(function () {
         $("#logoutButton").hide();
         $("#loginButton").show();
         $("#loginProfile").attr("src", "IMG/314485-64.png");
+        $("#sc2Img").attr("src", "IMG/sc2.png");
     });
 
 });

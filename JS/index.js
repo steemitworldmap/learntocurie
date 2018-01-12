@@ -72,7 +72,10 @@ function addValues() {
 
     $("#upvote").click(function () {
         if (upvoted == false) {
-            $("#upvoteSliderDiv").stop().slideToggle(500);
+            /*$("#upvoteSliderDiv").stop().slideToggle(500);*/
+            $("#upvote").css('color', '#50b5f4');
+            $("#upvote").css('border', '3px solid #50b5f4');
+            upvoted = true;
         } else {
             $("#upvote").css('color', 'lightgray');
             $("#upvote").css('border', '3px solid lightgray');
@@ -93,12 +96,14 @@ function addValues() {
         );
     });
 
-    $("#voteNow").click(function () {
-        $("#upvote").css('color', '#50b5f4');
-        $("#upvote").css('border', '3px solid #50b5f4');
-        $("#upvoteSliderDiv").stop().slideUp(500);
-        upvoted = true;
-    });
+    /*
+        $("#voteNow").click(function () {
+            $("#upvote").css('color', '#50b5f4');
+            $("#upvote").css('border', '3px solid #50b5f4');
+            $("#upvoteSliderDiv").stop().slideUp(500);
+            upvoted = true;
+        });
+    */
 
     $("#resteem").click(function () {
         if (resteemed == false) {

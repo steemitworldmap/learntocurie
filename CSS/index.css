@@ -88,8 +88,9 @@ body {
     width: 50%;
     object-fit: scale-down;
     max-height: 5vh;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+    /*padding-top: 1vh;
+    padding-bottom: 1vh;*/
+    vertical-align: middle;
 }
 
 #steemconnect {
@@ -97,10 +98,11 @@ body {
 }
 
 #steemconnect img {
-    width: 60%;
+    width: 65%;
     max-height: 5vh;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+/*    padding-top: 1.5vh;
+    padding-bottom: 0.5vh;*/
+    vertical-align: middle;
     object-fit: scale-down;
 }
 
@@ -108,6 +110,7 @@ body {
     width: 25%;
     color: white;
     font-family: 'Libre Franklin', sans-serif;
+    vertical-align: middle;
 }
 
 #header li:hover {
@@ -426,14 +429,14 @@ i {
     left: 2.5%;
     right: 2.5%;
     bottom: calc(8.5vh - 2px);
-    padding-top: 0.5vh;
+    /*padding-top: 0.5vh;*/
     padding-bottom: 0.5vh;
     background-color: #50b5f4;
     text-align: center;
     height: 5vh;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    display: none;
+    /*display: none;*/
 }
 
 #upvoteSlider {
@@ -568,16 +571,17 @@ i {
     #filtermenu img {
         width: 60%;
         max-height: 3vh;
-        padding-top: 1vh;
-        padding-bottom: 1vh;
+        /*padding-top: 1vh;
+        padding-bottom: 1vh;*/
+        vertical-align: middle;
         object-fit: scale-down;
     }
 
     #steemconnect img {
         width: 60%;
         max-height: 3vh;
-        padding-top: 1vh;
-        padding-bottom: 1vh;
+/*        padding-top: 1vh;
+        padding-bottom: 1vh;*/
         object-fit: scale-down;
     }
 
@@ -675,17 +679,17 @@ i {
 
     #upvoteSliderDiv {
         position: fixed;
-        left: 1.5%;
-        right: 1.5%;
+        left: 2.5%;
+        right: 2.5%;
         bottom: 5vh;
         padding-top: 0.5vh;
         padding-bottom: 0.5vh;
         background-color: #50b5f4;
         text-align: center;
-        height: 3vh;
+        height: 5vh;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        display: none;
+        /*display: none;*/
     }
 
     #upvoteSlider {
@@ -759,8 +763,8 @@ i {
     #steemconnect img {
         width: 60%;
         max-height: 3vh;
-        padding-top: 1vh;
-        padding-bottom: 1vh;
+        /*padding-top: 1vh;
+        padding-bottom: 1vh;*/
         object-fit: scale-down;
     }
 
@@ -870,7 +874,7 @@ i {
         height: 3vh;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        display: none;
+        /*display: none;*/
     }
 
     #upvoteSlider {
