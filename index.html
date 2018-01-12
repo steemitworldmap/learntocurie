@@ -12,22 +12,72 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="  https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.4/showdown.min.js
 "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script src="https://steemit.github.io/sc2-angular/sc2.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <script src="JS/SC2Utils.js"></script>
+    <script src="JS/App.js"></script>
     <script src="JS/index.js"></script>
 </head>
 
 <body>
     <ul id="header" class="noselect">
         <ul>
-            <li id="steemconnect"><img src="IMG/314485-64.png" alt="login"></li>
+            <li id="steemconnect"><img id="loginProfile" src="IMG/314485-64.png" alt="login"></li>
             <li id="following" class="textHeader">Following</li>
             <li id="curating" class="textHeader">Curating</li>
             <li id="discovering" class="textHeader">Discovering</li>
             <li id="filtermenu"><img src="IMG/2265317-64.png" alt="filter"></li>
         </ul>
     </ul>
-
+    
     <div id="steemConnectDiv">
-        <!-- Open steemconnect login in here-->
+        <img src="IMG/sc2.png" id="sc2Img">
+        <p id="loginButton" class="logButton">Login</p>
+        <p id="logoutButton" class="logButton">Logout</p>
+        <!--        <div id="vm">
+
+            <section v-if=" steemconnect.user != null">
+                <div>
+                    <div v-if="message != null" class="notification" :class="message.type">
+                        <button class="delete" @click="deleteMessage"></button> {{ message.data }}
+                    </div>
+
+
+                    <div>
+                        <form>
+                            
+
+                            <label class="label">Username</label>
+                            <input class="input is-large" type="text" placeholder="Username" autofocus="" :value="steemconnect.user.name" disabled>
+
+                            <label class="label">Reputation</label>
+                            <input class="input is-large" type="text" placeholder="Reputation" autofocus="" :value="steem.formatter.reputation(steemconnect.user.reputation)" disabled>
+
+
+                            <label class="label">Creation</label>
+                            <input class="input is-large" type="text" placeholder="Creation date" :value="formatDate(steemconnect.user.created)" disabled>
+
+                            <br/>
+                            <br/>
+                            <p>
+                                <a @click="logout" href="#" class="button is-info is-large">Logout</a> &nbsp;
+                                <a href="https://v2.steemconnect.com/apps/authorized" target="_blank" class="button is-info is-large">Revoke Access</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section v-else>
+                <img src="IMG/sc2.png" id="sc2Img">
+                <form id="sc2Login">
+                    <a :href="loginUrl">Login</a>
+                </form>
+            </section>
+
+        </div>-->
     </div>
     <div id="backgroundOverlay"> </div>
     <div id="postRelated">

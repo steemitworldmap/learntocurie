@@ -1,6 +1,9 @@
 $(document).ready(function () {
     addValues();
 
+    /*$("#steemconnect").on('click', function(){
+       window.location.replace("HTML/steemconnect.html"); 
+    });*/
     $("#steemconnect").on('click', function () {
         $("#steemConnectDiv").stop().fadeToggle(200);
         $("#backgroundOverlay").stop().fadeToggle();

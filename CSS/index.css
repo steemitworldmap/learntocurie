@@ -498,6 +498,53 @@ i {
     cursor: pointer;
 }
 
+#sc2Img {
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+    object-fit: contain;
+    padding-top: 10vh;
+}
+
+.logButton {
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 2vh;
+    padding: 2vh;
+    background-color: #50b5f4;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.logButton:hover {
+    cursor: pointer;
+    background-color: #3b98d6;
+}
+
+/*
+#sc2Login {
+    text-align: center;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 2vh;
+    padding: 2vh;
+    background-color: #50b5f4;
+}
+
+#sc2Login a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+#sc2Login:hover{
+    cursor: pointer;
+    background-color: #3b98d6;
+}*/
+
 @media (min-width: 500px) {
     #postBody {
         background-color: white;
