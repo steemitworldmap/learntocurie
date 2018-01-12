@@ -13,3 +13,7 @@ We're still in development, so we don't have an easy set up yet. But downloading
 We use steemconnect v2 for logging into learntocurie, for more information on SteemConnect you can take a look in here: https://github.com/steemit/steemconnect
 
 All you have to change is the sc2.init function in App.js
+
+<h2>Backend</h2>
+
+We still need to work on the backend. We're planning on writing a script that pulls the latest post each time, depending on the filters, and gives us the necessary data for voting, commenting, resteeming
