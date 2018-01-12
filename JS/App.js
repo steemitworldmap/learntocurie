@@ -4,8 +4,8 @@ $(document).ready(function () {
 
     sc2.init({
         app: 'learntocurie',
-        callbackURL: 'http://localhost/learntocurie%20git/learntocurie/HTML/steemconnect2', // Dev localhost URL
-        //callbackURL: 'http://steemconnect.surge.sh/steemconnect/',  // Live demo URL
+        //callbackURL: 'http://localhost/learntocurie%20git/learntocurie/HTML/steemconnect2', // Dev localhost URL
+        callbackURL: 'http://learntocurie.surge.sh/HTML/steemconnect2',  // Live demo URL
         scope: ['login', 'vote', 'comment', 'custom_json'],
         //access: $.cookie("access_token")  // requires latest version // use `npm i sc2-sdk --save`
     });
