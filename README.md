@@ -17,3 +17,7 @@ All you have to change is the sc2.init function in App.js
 <h2>Backend</h2>
 
 We still need to work on the backend. We're planning on writing a script that pulls the latest post each time, depending on the filters, and gives us the necessary data for voting, commenting, resteeming
+
+<h2>Demo of frontend</h2>
+
+http://learntocurie.surge.sh/
