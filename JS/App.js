@@ -19,14 +19,14 @@ $(document).ready(function () {
             }
             $("#loginProfile").attr("src",profilePicSrc);
             $("#sc2Img").attr("src", profilePicSrc);
-            $("#loginProfile").css("width", "100%");
+           /* $("#loginProfile").css("width", "100%");*/
         });
         $("#loginButton").hide();
         
     } else {
         $("#logoutButton").hide();
         $("#loginProfile").attr("src", "IMG/sc2.png");
-        $("#loginProfile").css("width", "65%");
+        /*$("#loginProfile").css("width", "65%");*/
         $("#sc2Img").attr("src", "IMG/sc2.png");
     };
 
