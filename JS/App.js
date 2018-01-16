@@ -50,7 +50,7 @@ $(document).ready(function () {
         });
         $("#logoutButton").hide();
         $("#loginButton").show();
-        $("#loginProfile").attr("src", "IMG/314485-64.png");
+        $("#loginProfile").attr("src", "IMG/sc2.png");
         $("#sc2Img").attr("src", "IMG/sc2.png");
     });
 
