@@ -116,6 +116,18 @@ function addValues() {
             resteemed = false;
         }
     });
+    
+    $("#comment").click(function () {
+        if (commented == false) {
+            $("#comment").css('color', '#50b5f4');
+            $("#comment").css('border', '3px solid #50b5f4');
+            commented = true;
+        } else {
+            $("#comment").css('color', 'lightgray');
+            $("#comment").css('border', '3px solid lightgray');
+            commented = false;
+        }
+    });
 
     $("#follow").click(function () {
         if (following == false) {

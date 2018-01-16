@@ -1,6 +1,11 @@
+html {
+    height: 100%;
+}
+
 body {
     background-color: aliceblue;
-    overflow: hidden;
+    height: 100%;
+    overflow-y: hidden;
 }
 
 .noselect {
@@ -59,6 +64,7 @@ body {
     background-color: #50b5f4;
     overflow: auto;
     overflow-y: hidden;
+    height: 2em;
 }
 
 #header li {
@@ -66,9 +72,8 @@ body {
     display: inline-block;
     text-align: center;
     float: left;
+    line-height: 3em;
     font-size: 0.7em;
-    line-height: 7vh;
-    height: 7vh;
 }
 
 #filtermenu {
@@ -87,9 +92,7 @@ body {
 #filtermenu img {
     width: 50%;
     object-fit: scale-down;
-    max-height: 5vh;
-    /*padding-top: 1vh;
-    padding-bottom: 1vh;*/
+    max-height: 2.5em;
     vertical-align: middle;
 }
 
@@ -99,9 +102,7 @@ body {
 
 #steemconnect img {
     width: 65%;
-    max-height: 5vh;
-/*    padding-top: 1.5vh;
-    padding-bottom: 0.5vh;*/
+    max-height: 2.5em;
     vertical-align: middle;
     object-fit: scale-down;
 }
@@ -123,9 +124,9 @@ body {
     background-color: white;
     border: 1px solid lightgray;
     position: fixed;
-    top: 17.5vh;
+    top: 17.5%;
     width: 97.5%;
-    height: 65vh;
+    height: 50%;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -145,28 +146,32 @@ body {
 
 }
 
+#postRelated {
+    height: calc(100% - 2em);
+}
+
 #lastPost {
     display: inline-block;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
     margin-left: calc(3% - 2px);
     margin-right: calc(3% - 2px);
     width: 15%;
-    height: calc(3.5vh - 4px);
-    line-height: 3.5vh;
+    height: calc(0.8em - 4px);
+    line-height: calc(0.8em - 4px);
     text-align: center;
     text-align: center;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.6em;
     font-weight: bold;
-    padding-bottom: 0.5vh;
-    padding-top: 0.5vh;
+    padding-bottom: 0.1em;
+    padding-top: 0.1em;
     padding-left: 1%;
     padding-right: 1%;
     border: 2px solid lightgray;
     color: lightgray;
     border-radius: 5px;
-    float: right;
+    float: left;
 }
 
 #lastPost:hover {
@@ -177,30 +182,28 @@ body {
 
 #progressbarOuter {
     display: inline-block;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    height: 3.5vh;
-    width: calc(74.5% - 4px);
-    margin-left: 2.5%;
+    margin-top: 0.5em;
+    height: 1.3em;
+    width: calc(75% - 4px);
     background-color: lightgray;
     border-radius: 5px;
 }
 
 #vpText {
-    width: calc(74.5% - 4px);
+    width: calc(75% - 4px);
     position: absolute;
     text-align: center;
     color: white;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 0.65em;
-    line-height: 3.5vh;
+    line-height: 230%;
 }
 
 
 /*Set width of this with js*/
 
 #progressbarInner {
-    height: 3.5vh;
+    height: 1.3em;
     max-width: 100%;
     background-color: rgba(117, 232, 41, 0.7);
     width: 80%;
@@ -214,9 +217,9 @@ body {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-    height: 77vh;
+    height: calc(100% - 6.2em);
     border-radius: 5px;
-    -webkit-box-shadow: -0.5vh 0.5vh 0.5vh rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: -0.15em 0.15em 0.15em rgba(0, 0, 0, 0.08);
 }
 
 #postTitle {
@@ -225,21 +228,19 @@ body {
 }
 
 #postInfo {
-    line-height: 3.5vh;
-    padding: 1vh;
+    line-height: 1.2em;
+    padding: 0.5em;
     background-color: #50b5f4;
     color: black;
-    height: 7vh;
+    height: 2.4em;
     width: auto;
 }
 
 #authorImageDiv {
-    width: 7vh;
-    height: 7vh;
-    overflow: auto;
+    max-height: 2.4em;
+    width: 2.4em;
     display: inline-block;
     float: right;
-    padding-right: 2vh;
 }
 
 #authorImage {
@@ -251,10 +252,9 @@ body {
 }
 
 #postInfoTableDiv {
-    padding-left: 1.5vh;
     float: left;
     max-height: 100%;
-    max-width: calc(100% - 11vh);
+    width: calc(100% - 2.4em);
     overflow: hidden;
 }
 
@@ -277,7 +277,6 @@ body {
 #postInfoTable tr, td, th{
     height: 0.7em;
     text-align: center;
-    line-height: 3.5vh;
 }
 
 #authorTh{
@@ -291,16 +290,15 @@ body {
 #postInfo li {
     display: inline-block;
     font-size: 0.7em;
-    line-height: 5vh;
 }
 
 
 #postBody {
+    height: calc(100% - 3.7em);
     background-color: white;
-    height: calc(70vh - 2px);
     overflow-y: scroll;
-    padding-left: 1.5vh;
-    padding-right: 2vh;
+    padding-left: 0.5em;
+    padding-right: 0.8em;
     font-size: 0.8em;
     line-height: 1.5em;
     display: block;
@@ -365,12 +363,12 @@ i {
 
 #curationTools {
     width: 97%;
-    margin-left: 1.5%;
-    margin-right: 1.5%;
-    /*margin-top: 1vh;*/
-    height: calc(8.5vh - 2px);
+    height: calc(2em + 7px);
     overflow: hidden;
     /*background-color: #efefef;*/
+    position: fixed;
+    bottom: 1.15em;
+    left: 1.5%;
 }
 
 #curationTools li {
@@ -381,8 +379,7 @@ i {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 0.9em;
     font-weight: bold;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 0.25em;
 }
 
 #curationTools li:hover {
@@ -399,8 +396,9 @@ i {
     border: 3px solid #62DD9A;
     color: #62DD9A;
     float: right;
-    height: 5vh;
-    line-height: 5vh;
+    height: 1.5em;
+    line-height: calc(1.5em + 2px);
+
 }
 
 .arrow:hover {
@@ -410,12 +408,12 @@ i {
 
 .postAction {
     width: calc(13% - 6px);
-    border-radius: 12px;
+    border-radius: 5px;
     border: 3px solid lightgray;
     color: lightgray;
     float: left;
-    height: 5vh;
-    line-height: 5vh;
+    height: 1.5em;
+    line-height: calc(1.5em + 2px);
 }
 
 .postAction:hover {
@@ -425,40 +423,34 @@ i {
 
 #upvoteSliderDiv {
     position: fixed;
-    width: calc(95% - 0.4em);
-    left: 2.5%;
-    right: 2.5%;
-    bottom: calc(8.5vh - 2px);
-    /*padding-top: 0.5vh;*/
-    padding-bottom: 0.5vh;
+    bottom: 0;
+    width: 96%;
+    margin-left: 2%;
     background-color: #50b5f4;
     text-align: center;
-    height: 5vh;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    height: 1.2em;
     /*display: none;*/
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
 }
 
 #upvoteSlider {
-    margin-left: 3%;
-    width: 60%;
+    width: calc(57% - 3px);
     float: left;
     -webkit-appearance: none;
     -moz-appearance: none;
-    height: 1.5vh;
+    height: 0.6em;
+    margin-top: 0.45em;
     background-color: #62DD9A;
-    margin-top: 1.75vh;
     outline: none;
-    margin-right: 2%;
 }
 
 #upvoteSlider::-webkit-slider-thumb {
     -webkit-appearance: none !important;
     background-color: #E9E9E9;
     border: 1px solid #CECECE;
-    height: 3vh;
-    width: 3vh;
-    border-radius: 100px;
+    height: 1em;
+    width: 1em;
 }
 
 #upvoteSlider::-webkit-slider-thumb:hover {
@@ -466,55 +458,31 @@ i {
 }
 
 #slidervalue {
-    padding-left: 3%;
+    width: calc(13% + 6px);
     padding-right: 1.5%;
     float: left;
-    line-height: 5vh;
+    margin-top: 0.2em;
+    line-height: 1.2em;
     font-size: 0.8em;
     color: white;
     font-family: 'Libre Franklin', sans-serif;
-}
-
-#voteNow {
-    margin-left: 2%;
-    width: 10%;
-    float: left;
-    margin-top: 0.75vh;
-    margin-bottom: 0.75vh;
-    line-height: 3.5vh;
-    font-size: 0.8em;
-    color: lightgray;
-    border-radius: 100px;
-    font-family: 'Libre Franklin', sans-serif;
-    background-color: white;
-    -webkit-box-sizing: border-box;
-    /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;
-    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    /* Opera/IE 8+ */
-}
-
-#voteNow:hover {
-    background-color: #62DD9A;
-    color: white;
-    cursor: pointer;
+    text-align: center;
 }
 
 #sc2Img {
     text-align: center;
     width: 100%;
-    height: 15vh;
+    max-height: 25%;
     object-fit: contain;
-    padding-top: 10vh;
+    padding-top: 15%;
 }
 
 .logButton {
     width: 20%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 2vh;
-    padding: 2vh;
+    margin-top: 1em;
+    padding: 0.7em;
     background-color: #50b5f4;
     color: white;
     text-transform: uppercase;
@@ -531,8 +499,6 @@ i {
     text-align: center;
     width: 20%;
     margin: 0 auto;
-    margin-top: 2vh;
-    padding: 2vh;
     background-color: #50b5f4;
 }
 
@@ -550,100 +516,36 @@ i {
 
 @media (min-width: 500px) {
     #postBody {
-        background-color: white;
-        height: 79vh;
-        overflow-y: scroll;
         font-size: 0.9em;
-        line-height: 1.6em;
-        padding-left: 10%;
-        padding-right: 10%;
+        line-height: 1.5em;
+        padding-left: 15%;
+        padding-right: 15%;
     }
 
     #header {
-        height: 5vh;
+        height: 3em;
     }
 
     #header li {
         font-size: 0.8em;
-        line-height: 5vh;
+        line-height: 3.7em;
     }
 
-    #filtermenu img {
-        width: 60%;
-        max-height: 3vh;
-        /*padding-top: 1vh;
-        padding-bottom: 1vh;*/
-        vertical-align: middle;
-        object-fit: scale-down;
-    }
-
-    #steemconnect img {
-        width: 60%;
-        max-height: 3vh;
-/*        padding-top: 1vh;
-        padding-bottom: 1vh;*/
-        object-fit: scale-down;
-    }
-
-    .textHeader {
-        width: 25%;
-        color: white;
-        font-family: 'Libre Franklin', sans-serif;
-    }
-
-    #lastPost {
-        margin-top: calc(1vh - 4px);
-        margin-bottom: calc(1vh - 4px);
-        width: 15%;
-        height: calc(2.5vh - 4px);
-        line-height: 2.5vh;
-        float: left;
-    }
-
-    #lastPost:hover {
-        cursor: pointer;
-        color: #50b5f4;
-        border: 2px solid #50b5f4;
-    }
-
-    #progressbarOuter {
-        margin-top: 1vh;
-        margin-bottom: 1vh;
-        height: 2.5vh;
-        margin-left: 0%;
-        margin-right: 2.5%;
-    }
-
-    #vpText {
-        line-height: 2.5vh;
-        font-size: 0.8em;
-    }
-
-
-    /*Set width of this with js*/
-    #progressbarInner {
-        height: 2.5vh;
-    }
 
     #postText {
-        height: 85vh;
-    }
-
-    #postInfo {
-        padding-top: 0.5vh;
-        padding-bottom: 0.5vh;
-        line-height: 2.5vh;
-        height: 5vh;
+        height: calc(100% - 8.2em);
     }
 
     #authorImageDiv {
-        width: 5vh;
-        height: 5vh;
-        padding-right: 0;
+        margin-right: 15%;
     }
 
     #postInfoTableDiv {
-        padding-left: 0px;
+        float: left;
+        margin-left: 15%;
+        max-height: 100%;
+        width: calc(60% - 2.4em);
+        overflow: hidden;
     }
 
     #infoP {
@@ -653,57 +555,35 @@ i {
     #infoP2 {
         font-size: 0.7em;
     }
-
     #curationTools {
-        height: calc(4.5vh - 2px);
-        overflow: hidden;
-        /*background-color: #efefef;*/
+        height: calc(3em + 7px);
+        bottom: 0.9em;
     }
-
-    #curationTools li {
-        font-size: 0.9em;
-        font-weight: bold;
-        margin-top: 0.5vh;
-        margin-bottom: 0.5vh;
-    }
-
     .arrow {
-        height: 3vh;
-        line-height: 3vh;
+        height: 1.75em;
+        line-height: calc(1.75em + 2px);
     }
-
     .postAction {
-        height: 3vh;
-        line-height: 3vh;
+        height: 1.75em;
+        line-height: calc(1.75em + 2px);
     }
 
     #upvoteSliderDiv {
-        position: fixed;
-        left: 2.5%;
-        right: 2.5%;
-        bottom: 5vh;
-        padding-top: 0.5vh;
-        padding-bottom: 0.5vh;
-        background-color: #50b5f4;
-        text-align: center;
-        height: 5vh;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        /*display: none;*/
+        height: 1.7em;
     }
 
     #upvoteSlider {
-        height: 1.5vh;
-        margin-top: 0.75vh;
-        margin-right: 2%;
+        height: 0.8em;
+        margin-top: 0.7em;
     }
-
     #slidervalue {
-        line-height: 3.5vh;
+        line-height: 1.7em;
         font-size: 0.9em;
         color: white;
         font-family: 'Libre Franklin', sans-serif;
     }
+
+    /*
 
     #voteNow {
         margin-left: 2%;
@@ -718,13 +598,11 @@ i {
         font-family: 'Libre Franklin', sans-serif;
         background-color: white;
         -webkit-box-sizing: border-box;
-        /* Safari/Chrome, other WebKit */
         -moz-box-sizing: border-box;
-        /* Firefox, other Gecko */
         box-sizing: border-box;
-        /* Opera/IE 8+ */
+        
     }
-
+*/
 }
 
 @media (min-width: 1023px) {
@@ -740,8 +618,6 @@ i {
     #header li {
         float: left;
         font-size: 0.8em;
-        line-height: 5vh;
-        height: 5vh;
         width: 16.666%;
         text-align: center;
     }
@@ -760,154 +636,26 @@ i {
         text-align: center !important;
     }
 
-    #steemconnect img {
-        width: 60%;
-        max-height: 3vh;
-        /*padding-top: 1vh;
-        padding-bottom: 1vh;*/
-        object-fit: scale-down;
-    }
-
     .textHeader {
         width: 25%;
         color: white;
         font-family: 'Libre Franklin', sans-serif;
     }
 
-    #lastPost {
-        margin-top: calc(1vh - 4px);
-        margin-bottom: calc(1vh - 4px);
-        width: 15%;
-        height: calc(2.5vh - 4px);
-        line-height: 2.5vh;
-        float: left;
-    }
-
-    #lastPost:hover {
-        cursor: pointer;
-        color: #50b5f4;
-        border: 2px solid #50b5f4;
-    }
-
-    #progressbarOuter {
-        margin-top: 1vh;
-        margin-bottom: 1vh;
-        height: 2.5vh;
-        margin-left: 0%;
-        margin-right: 2.5%;
-    }
-
-    #vpText {
-        line-height: 2.5vh;
-        width: calc(74.5% / 2 - 4px);
-        font-size: 0.8em;
-    }
-
-
-    /*Set width of this with js*/
-    #progressbarInner {
-        height: 2.5vh;
-    }
-
-    #postText {
-        height: 85vh;
-    }
-
-    #postInfo {
-        padding-top: 0.5vh;
-        padding-bottom: 0.5vh;
-        line-height: 2.5vh;
-        height: 5vh;
-    }
-
-    #authorImageDiv {
-        width: 5vh;
-        height: 5vh;
-        padding-right: 0;
-    }
-
-    #postInfoTableDiv {
-        padding-left: 0px;
-    }
-
-    #infoP {
-        font-size: 0.8em;
-    }
-
-    #infoP2 {
-        font-size: 0.7em;
-    }
-
     #curationTools {
-        height: calc(4.5vh - 2px);
-        overflow: hidden;
-        /*background-color: #efefef;*/
-    }
-
-    #curationTools li {
-        font-size: 0.9em;
-        font-weight: bold;
-        margin-top: 0.5vh;
-        margin-bottom: 0.5vh;
-    }
-
-    .arrow {
-        height: 3vh;
-        line-height: 3vh;
-    }
-
-    .postAction {
-        height: 3vh;
-        line-height: 3vh;
+        width: 48.5%;
+        left: 0.75%;
     }
 
     #upvoteSliderDiv {
         position: fixed;
-        width: calc(94% / 2 - 0.4em);
-        left: 1.5%;
-        right: 1.5%;
-        bottom: 5vh;
-        padding-top: 0.5vh;
-        padding-bottom: 0.5vh;
-        background-color: #50b5f4;
-        text-align: center;
-        height: 3vh;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        /*display: none;*/
+        bottom: 0;
+        width: 47.5%;
+        margin-left: 1.25%;
     }
 
-    #upvoteSlider {
-        height: 1.5vh;
-        margin-top: 0.75vh;
-        margin-right: 2%;
-    }
-
-    #slidervalue {
-        line-height: 3.5vh;
-        font-size: 0.9em;
-        color: white;
-        font-family: 'Libre Franklin', sans-serif;
-    }
-
-    #voteNow {
-        margin-left: 2%;
-        width: 10%;
-        float: left;
-        margin-top: 0.5vh;
-        margin-bottom: 0.5vh;
-        line-height: 2.5vh;
-        font-size: 0.8em;
-        color: lightgray;
-        border-radius: 100px;
-        font-family: 'Libre Franklin', sans-serif;
-        background-color: white;
-        -webkit-box-sizing: border-box;
-        /* Safari/Chrome, other WebKit */
-        -moz-box-sizing: border-box;
-        /* Firefox, other Gecko */
-        box-sizing: border-box;
-        /* Opera/IE 8+ */
+    #vpText {
+        width: calc(37.5% - 4px);
     }
 
 }
