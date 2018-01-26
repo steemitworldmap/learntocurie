@@ -5,7 +5,7 @@
 <head>
     <title>Learn to curie</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
     <link rel="stylesheet" type="text/css" href="CSS/index.css">
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Dosis:400,700" rel="stylesheet">
@@ -25,13 +25,14 @@
     <ul id="header" class="noselect">
         <ul>
             <li id="steemconnect"><img id="loginProfile" src="IMG/sc2.png" alt="login"></li>
-            <li id="following" class="textHeader">Following</li>
+            <!--<li id="following" class="textHeader">Following</li>
             <li id="curating" class="textHeader">Curating</li>
-            <li id="discovering" class="textHeader">Discovering</li>
+            <li id="discovering" class="textHeader">Discovering</li>-->
+            <li id="home"><img src="IMG/185038-128.png" alt="home"></li>
             <li id="filtermenu"><img src="IMG/2265317-64.png" alt="filter"></li>
         </ul>
     </ul>
-    
+
     <div id="steemConnectDiv">
         <img src="IMG/sc2.png" id="sc2Img">
         <p id="loginButton" class="logButton">Login</p>
@@ -86,14 +87,14 @@
             <p id="vpText">VP: <span id="vpPercentage">80</span>%</p>
             <div id="progressbarInner"></div>
         </div>
-        <p class="noselect" id="lastPost">&#8629;</p>
+        <p class="noselect" id="lastPost">↺</p>
         <div id="postText">
             <div id="postInfo">
                 <div id="authorImageDiv"><img id="authorImage" src="https://steemitimages.com/u/steemitworldmap/avatar" alt="author image" /></div>
 
                 <div id="postInfoTableDiv">
                     <p id="infoP"><span id="howOld">32 minutes ago</span> by <span id="authorName">Steemitworldmap</span> (<span id="authorRep">55</span>)</p>
-                    <p id="infoP2"><span id="postSbd">$125.52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postUpvotes">▲1569</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postResteems">↪122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postComments">&#x1f4ac;156</span></p>
+                    <p id="infoP2"><span id="postSbd">$125.52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postUpvotes">▲1569</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postResteems">	⇄122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="postComments">&#x1f4ac;156</span></p>
                     <!--<table id="postInfoTable">
                 <tr>
                     <th id="authorTh">Author</th>
@@ -178,7 +179,7 @@
         <ul id="curationTools" class="noselect">
             <!--<li id="goPrev" class="arrow"><img src="IMG/arrowleft.png" alt="arrow"></li>-->
             <li id="upvote" class="postAction">▲</li>
-            <li id="resteem" class="postAction">⮎</li>
+            <li id="resteem" class="postAction">⇄</li>
             <li id="comment" class="postAction">...</li>
             <!--Update with + if not following, - if already following-->
             <li id="follow" class="postAction">F<span id="followSpan"></span></li>
@@ -194,6 +195,55 @@
             <!--<p id="voteNow">▲</p>--><input id="upvoteSlider" type="range" min="1" max="100" step="1" value="100">
         </div>
         <div id="commentBox"></div>
+    </div>
+    <div id="filterRelated">
+        <!--<p id="logInFS">LOG IN</p>-->
+        <div id="logInFS">
+        <img src="IMG/sc2.png" alt="log in" id="loginProfile2">
+        </div>
+        <!--select filter preset dropdown, available filters, save as (prompt name), remove (prompt are you sure)-->
+        <!--        - Min. - max. time (e.g.: 10 - 25min old)
+- Max reward (e.g.: < 5 SBD)
+- Max earned in past X time: (e.g.: max earned 50 SBD over last 7 days)
+- Min - max reputation
+- Include tags with AND / OR queries e.g.: Travel OR (Photography AND nature)
+- Exclude tags with AND / OR queries
+- Word count?
+- Body contains
+- User
+TODO: SHOW ERRORS IF VALUES ARE NOT VALID!!!!
+Do we really need the AND / OR / () IN tags??
+-->
+        <select id="presets">
+            <option id="selectPreset" value="" disabled selected>Select your filter preset</option>
+            <option>Test preset</option>
+        </select>
+        <p class="filterText2">Leave filter blank if you do not want to include it</p>
+        <!--<p class="filterText">Specific user</p>
+        <input id="specificUser" class="oneInput" placeholder="@username">-->
+        <p class="filterText">Time of post (min - max)</p>
+        <input id="minTime" class="twoInput twoFirst" placeholder="hhh:mm">
+        <p class="inputSplit">-</p><input id="maxTime" class="twoInput" placeholder="hhh:mm">
+        <p class="filterText">Max earned over last X time</p>
+        <input id="totalReward" class="twoInput twoFirst" placeholder="SBD value">
+        <p class="inputSplit">-</p><input id="totalTime" class="twoInput" placeholder="hhh:mm">
+        <p class="filterText">Reputation (min - max)</p>
+        <input id="minRep" class="twoInput twoFirst" placeholder="Reputation">
+        <p class="inputSplit">-</p><input id="maxRep" class="twoInput" placeholder="Reputation">
+        <p class="filterText">Wordcount (min - max)</p>
+        <input id="minWC" class="twoInput twoFirst" placeholder="Wordcount">
+        <p class="inputSplit">-</p><input id="maxWC" class="twoInput" placeholder="Wordcount">
+        <p class="filterText">Post contains</p>
+        <input id="bodyContains" class="oneInput" placeholder="Word or sentence">
+        <p class="filterText">Include tags: AND / OR / ()</p>
+        <input id="includeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
+        <p class="filterText">Exclude tags: AND / OR / ()</p>
+        <input id="excludeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
+        <p class="filterText">Posts from specific users</p>
+        <input id="specificUser" class="oneInput" placeholder="@username, @username,...">
+        <p class="filterText">Posts from group of users</p>
+        <input type="checkbox" class="groupCheck groupCheck1" id="followingInput" name="following" value="following"><label for="followingInput" class="groupLabel">following</label>
+        <input type="checkbox" id="curatingInput" class="groupCheck" name="curating" value="curating"><label for="curatingInput" class="groupLabel">curating</label>
     </div>
 </body>
 

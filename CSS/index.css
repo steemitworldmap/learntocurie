@@ -6,6 +6,7 @@ body {
     background-color: aliceblue;
     height: 100%;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .noselect {
@@ -71,13 +72,24 @@ body {
     text-transform: uppercase;
     display: inline-block;
     text-align: center;
-    float: left;
-    line-height: 2.8em;
-    font-size: 0.7em;
+    /* float: left;*/
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+#home {
+    width: 70%;
+}
+
+#home img {
+    object-fit: scale-down;
+    max-height: 1.6em;
+    vertical-align: middle;
 }
 
 #filtermenu {
     width: 15%;
+    float: right;
     /*width: 12.5%;
     color: white;
     color: white;
@@ -91,16 +103,17 @@ body {
 
 #filtermenu img {
     object-fit: scale-down;
-    max-height: 2em;
+    max-height: 1.6em;
     vertical-align: middle;
 }
 
 #steemconnect {
-    width: 10%;
+    width: 15%;
+    float: left;
 }
 
 #steemconnect img {
-    max-height: 2em;
+    max-height: 1.6em;
     vertical-align: middle;
     object-fit: scale-down;
 }
@@ -110,6 +123,8 @@ body {
     color: white;
     font-family: 'Libre Franklin', sans-serif;
     vertical-align: middle;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 #header li:hover {
@@ -154,7 +169,7 @@ body {
     margin-bottom: 0.2em;
     margin-left: calc(3% - 2px);
     margin-right: calc(3% - 2px);
-    width: 15%;
+    width: calc(11% - 6px);
     height: calc(0.8em - 4px);
     line-height: calc(0.8em - 4px);
     text-align: center;
@@ -182,7 +197,7 @@ body {
     display: inline-block;
     margin-top: 0.5em;
     height: 1.3em;
-    width: calc(75% - 4px);
+    width: calc(79%);
     background-color: lightgray;
     border-radius: 5px;
 }
@@ -218,6 +233,7 @@ body {
     height: calc(100% - 6.2em);
     border-radius: 5px;
     -webkit-box-shadow: -0.15em 0.15em 0.15em rgba(0, 0, 0, 0.08);
+    overflow-x: hidden;
 }
 
 #postTitle {
@@ -227,15 +243,16 @@ body {
 
 #postInfo {
     line-height: 1.2em;
-    padding: 0.5em;
+    /*padding: 0.5em;*/
     background-color: #50b5f4;
     color: black;
-    height: 2.4em;
+    height: 3.4em;
     width: auto;
 }
 
 #authorImageDiv {
-    max-height: 2.4em;
+    margin-top: 0.5em;
+    height: 2.4em;
     width: 2.4em;
     display: inline-block;
     float: right;
@@ -244,15 +261,16 @@ body {
 #authorImage {
     display: block;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 3.4em;
     object-fit: cover;
     cursor: pointer;
 }
 
 #postInfoTableDiv {
+    padding-top: 0.5em;
     float: left;
-    max-height: 100%;
-    width: calc(100% - 2.4em);
+    max-height: 3.4em;
+    width: calc(100% - 3.2em);
     overflow: hidden;
 }
 
@@ -343,12 +361,14 @@ i {
 }
 
 #postBody a {
-    color: #00c499;
+    /*color: #00c499;*/
+    color: #50b5f4;
     text-decoration: none;
 }
 
 #postBody a:hover {
-    color: #00D5A9;
+    /*color: #00D5A9;*/
+    color: #3b98d6;
 }
 
 #postBody ul {
@@ -433,7 +453,7 @@ i {
 }
 
 #upvoteSlider {
-    width: calc(57% - 3px);
+    width: calc(59% - 3px);
     float: left;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -512,6 +532,93 @@ i {
     background-color: #3b98d6;
 }*/
 
+#filterRelated {
+    display: none;
+    width: 100%;
+    margin: 0 auto;
+    height: calc(100% - 2em);
+    font-family: 'Libre Franklin', sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#presets {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 1.5em;
+    height: 2em;
+    margin-top: 0.7em;
+    font-size: 0.7em;
+}
+
+#presets:disabled {
+    color: gray;
+}
+
+.filterText {
+    font-size: 0.8em;
+    line-height: 1.5em;
+    padding-bottom: 0em;
+    font-weight: 600;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 0.5em;
+    padding-bottom: 0.1em;
+    clear: both;
+}
+
+.filterText2 {
+    font-size: 0.8em;
+    line-height: 1.5em;
+    padding-top: 1em;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+.twoInput {
+    width: 40%;
+    display: inline-block;
+    float: left;
+}
+
+.twoFirst {
+    margin-left: 5%;
+}
+
+.oneInput {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.inputSplit {
+    display: inline-block;
+    text-align: center;
+    width: calc(10% - 4px);
+    float: left;
+}
+
+.oneInput,
+.twoInput {
+    display: block;
+}
+
+.groupCheck1 {
+    margin-left: 5%;
+}
+
+.groupLabel {
+    font-size: 0.8em;
+}
+
+#logInFS {
+    display: none;
+}
+
 @media (min-width: 500px) {
     #postBody {
         font-size: 0.9em;
@@ -525,16 +632,19 @@ i {
     }
 
     #header li {
-        font-size: 0.8em;
-        line-height: 3.7em;
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
     }
     #filtermenu img {
-        max-height: 3em;
+        max-height: 2.4em;
     }
 
     #steemconnect img {
-        max-height: 3em;
+        max-height: 2.4em;
+    }
 
+    #home img {
+        max-height: 2.4em;
     }
 
     #postText {
@@ -608,12 +718,107 @@ i {
         
     }
 */
+    #filterRelated {
+        width: 100%;
+        margin-top: 2.5em;
+    }
+
+    #presets {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+        height: 2.5em;
+        margin-top: 1.5em;
+        font-size: 0.8em;
+    }
+
+    .filterText {
+        font-size: 0.9em;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .filterText2 {
+        font-size: 0.9em;
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    .oneInput {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .twoInput {
+        width: 27.5%;
+    }
+    .twoFirst {
+        margin-left: 20%;
+    }
+
+    .inputSplit {
+        width: calc(5% - 4px)
+    }
+
+    .oneInput,
+    .twoInput {
+        height: 1.5em;
+    }
+
+    .groupCheck1 {
+        margin-left: 20%;
+    }
+
+    .groupLabel {
+        font-size: 0.9em;
+    }
+
+
 }
 
 @media (min-width: 1023px) {
+    /*#logInFS {
+        background-color: #50b5f4;
+        display: block;
+        color: white;
+        text-align: center;
+        font-family: 'Libre Franklin', sans-serif;
+        font-weight: 600;
+        line-height: 3.4em;
+    }*/
+    
+    #logInFS {
+        background-color: #50b5f4;
+        display: block;
+        height: 3.4em;
+        text-align: center;
+    }
+    
+    #logInFS img{
+        object-fit: scale-down;
+        height: 2.4em;
+        margin-top: 0.5em;
+    }
+    
+    #logInFS:hover {
+        cursor: pointer;
+        background-color: #3b98d6;
+    }
+    
+    #header {
+        display: none;
+    }
     /* Styles */
     #postRelated {
+        padding-left: 15%;
         width: 50%;
+        float: left;
+        height: 100%;
+    }
+    #postText {
+        height: calc(100% - 7.2em);
     }
 
     #steemConnectDiv {
@@ -640,7 +845,9 @@ i {
         float: right !important;
         text-align: center !important;
     }
-
+    #following {
+        margin-left: 15%;
+    }
     .textHeader {
         width: 25%;
         color: white;
@@ -649,7 +856,7 @@ i {
 
     #curationTools {
         width: 48.5%;
-        left: 0.75%;
+        left: 15.75%;
     }
 
     #upvoteSliderDiv {
@@ -661,6 +868,55 @@ i {
 
     #vpText {
         width: calc(37.5% - 4px);
+    }
+
+    #filterRelated {
+        border: 1px solid #D3D3D3;
+        display: block;
+        width: calc(20% - 2px);
+        margin-top: 2.25em;
+        padding-left: 0%;
+        float: left;
+        height: calc(100% - 7.2em);
+        font-family: 'Libre Franklin', sans-serif;
+        border-radius: 5px;
+    }
+
+    #presets {
+        width: 80%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .filterText {
+        width: 80%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .filterText2 {
+        width: 80%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .oneInput {
+        width: 80%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .twoInput {
+        width: 35%;
+    }
+    .twoFirst {
+        margin-left: 5%;
+    }
+
+    .inputSplit {
+        width: calc(10% - 4px)
+    }
+    .groupCheck1 {
+        margin-left: 5%;
     }
 
 }
