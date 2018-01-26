@@ -1,10 +1,85 @@
 $(document).ready(function () {
+    window.onresize = function () {
+        if (window.innerWidth >= 1023) {
+            $("#postRelated").show();
+            $("#filterRelated").show();
+        } else {
+            $("#postRelated").show();
+            $("#filterRelated").hide();
+        }
+    }
+
+    var steemconnect;
+    var profilePicSrc;
+
+    sc2.init({
+        app: 'learntocurie',
+        //callbackURL: 'http://localhost/learntocurie%20git/learntocurie/HTML/steemconnect2', // Dev localhost URL
+        callbackURL: 'http://learntocurie.surge.sh/HTML/steemconnect2', // Live demo URL
+        scope: ['login', 'vote', 'comment', 'custom_json'],
+        //access: $.cookie("access_token")  // requires latest version // use `npm i sc2-sdk --save`
+    });
+
+    if ($.cookie("access_token") != null) {
+        sc2.setAccessToken($.cookie("access_token"));
+        sc2.me(function (err, result) {
+            console.log('/me', err, result); // DEBUG
+            if (!err) {
+                profilePicSrc = JSON.parse(result.account.json_metadata)['profile']['profile_image'];
+                $("#loginProfile").attr("src", profilePicSrc);
+                $("#loginProfile2").attr("src", profilePicSrc);
+                $("#sc2Img").attr("src", profilePicSrc);
+                $("#loginButton").hide();
+            } else {
+                $("#logoutButton").hide();
+            }
+            /* $("#loginProfile").css("width", "100%");*/
+        });
+
+    } else {
+        $("#logoutButton").hide();
+        $("#steemConnectDiv").stop().show();
+        $("#backgroundOverlay").stop().show();
+        /*$("#loginProfile").attr("src", "IMG/sc2.png");
+        $("#loginProfile2").attr("src", "IMG/sc2.png");
+        $("#sc2Img").attr("src", "IMG/sc2.png");*/
+    };
+
+    $("#loginButton").on('click', function () {
+        $.when(window.location.replace(sc2.getLoginURL()));
+    });
+
+    $("#logoutButton").on('click', function () {
+        sc2.revokeToken(function (err, result) {
+            console.log('You successfully logged out', err, result);
+            // Remove all cookies
+            $.removeCookie("access_token", {
+                path: '/'
+            });
+            $.removeCookie("username", {
+                path: '/'
+            });
+            $.removeCookie("expires_in", {
+                path: '/'
+            });
+        });
+        $("#logoutButton").hide();
+        $("#loginButton").show();
+        $("#loginProfile").attr("src", "IMG/sc2.png");
+        $("#loginProfile2").attr("src", "IMG/sc2.png");
+        $("#sc2Img").attr("src", "IMG/sc2.png");
+    });
+
     addValues();
 
     /*$("#steemconnect").on('click', function(){
        window.location.replace("HTML/steemconnect.html"); 
     });*/
     $("#steemconnect").on('click', function () {
+        $("#steemConnectDiv").stop().fadeToggle(200);
+        $("#backgroundOverlay").stop().fadeToggle();
+    });
+    $("#logInFS").on('click', function () {
         $("#steemConnectDiv").stop().fadeToggle(200);
         $("#backgroundOverlay").stop().fadeToggle();
     });
@@ -17,6 +92,16 @@ $(document).ready(function () {
             container.stop().fadeOut(200);
             $("#backgroundOverlay").stop().fadeOut(200);
         }
+    });
+
+    $("#filtermenu").on('click', function () {
+        $("#postRelated").stop().fadeToggle();
+        $("#filterRelated").stop().fadeToggle();
+    });
+
+    $("#home").on('click', function () {
+        $("#postRelated").stop().fadeIn();
+        $("#filterRelated").stop().fadeOut();
     });
 
 });
@@ -116,7 +201,7 @@ function addValues() {
             resteemed = false;
         }
     });
-    
+
     $("#comment").click(function () {
         if (commented == false) {
             $("#comment").css('color', '#50b5f4');
