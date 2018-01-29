@@ -243,7 +243,9 @@ function addValues() {
 
 function getVotingPower(result, votingPower) {
     var lastTimeVoted = new Date(result.account.last_vote_time.replace('T', ' '));
-    var today = Date.now();
+    var today = Date.now() + ((new Date().getTimezoneOffset()) * 60000);
+    console.log(lastTimeVoted);
+    console.log(today);
     /*console.log(today - lastTimeVoted.getTime());
     console.log((today - lastTimeVoted.getTime())/4320000);*/
     var allVotingPower = ((result.account.voting_power / 100) + ((today - lastTimeVoted.getTime()) / 4320000)).toFixed(2);
