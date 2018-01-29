@@ -9,6 +9,7 @@ $(document).ready(function () {
         }
     }
 
+    var votingPower;
     var steemconnect;
     var profilePicSrc;
 
@@ -25,6 +26,7 @@ $(document).ready(function () {
         sc2.me(function (err, result) {
             console.log('/me', err, result); // DEBUG
             if (!err) {
+                getVotingPower(result, votingPower);
                 profilePicSrc = JSON.parse(result.account.json_metadata)['profile']['profile_image'];
                 $("#loginProfile").attr("src", profilePicSrc);
                 $("#loginProfile2").attr("src", profilePicSrc);
@@ -237,4 +239,19 @@ function addValues() {
             curating = false;
         }
     });
+}
+
+function getVotingPower(result, votingPower) {
+    var lastTimeVoted = new Date(result.account.last_vote_time.replace('T', ' '));
+    var today = Date.now();
+    /*console.log(today - lastTimeVoted.getTime());
+    console.log((today - lastTimeVoted.getTime())/4320000);*/
+    var allVotingPower = ((result.account.voting_power / 100) + ((today - lastTimeVoted.getTime()) / 4320000)).toFixed(2);
+    if (allVotingPower > 100) {
+        allVotingPower = 100;
+    }
+    votingPower = allVotingPower;
+    $("#progressbarInner").css('width', votingPower + "%");
+    $("#vpPercentage").html(votingPower);
+    console.log(votingPower);
 }

@@ -84,7 +84,7 @@
     <div id="postRelated">
         <!--set vpPercentage with jquery-->
         <div id="progressbarOuter" class="noselect">
-            <p id="vpText">VP: <span id="vpPercentage">80</span>%</p>
+            <p id="vpText">VP: <span id="vpPercentage">100</span>%</p>
             <div id="progressbarInner"></div>
         </div>
         <p class="noselect" id="lastPost">↺</p>
@@ -224,6 +224,9 @@ Do we really need the AND / OR / () IN tags??
         <p class="filterText">Time of post (min - max)</p>
         <input id="minTime" class="twoInput twoFirst" placeholder="hhh:mm">
         <p class="inputSplit">-</p><input id="maxTime" class="twoInput" placeholder="hhh:mm">
+        <p class="filterText">Post value (min - max)</p>
+        <input id="minValue" class="twoInput twoFirst" placeholder="SBD value">
+        <p class="inputSplit">-</p><input id="maxValue" class="twoInput" placeholder="SBD value">
         <p class="filterText">Max earned over last X time</p>
         <input id="totalReward" class="twoInput twoFirst" placeholder="SBD value">
         <p class="inputSplit">-</p><input id="totalTime" class="twoInput" placeholder="hhh:mm">
@@ -239,11 +242,18 @@ Do we really need the AND / OR / () IN tags??
         <input id="includeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
         <p class="filterText">Exclude tags: AND / OR / ()</p>
         <input id="excludeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
-        <p class="filterText">Posts from specific users</p>
+        <p class="filterText">Specific users</p>
         <input id="specificUser" class="oneInput" placeholder="@username, @username,...">
+        <p class="filterText">Exclude specific users</p>
+        <input id="excludeSpecificUser" class="oneInput" placeholder="@username, @username,...">
         <p class="filterText">Posts from group of users</p>
         <input type="checkbox" class="groupCheck groupCheck1" id="followingInput" name="following" value="following"><label for="followingInput" class="groupLabel">following</label>
         <input type="checkbox" id="curatingInput" class="groupCheck" name="curating" value="curating"><label for="curatingInput" class="groupLabel">curating</label>
+        <div id="spacingOut"></div>
+        <div id="saveLoad">
+            <p id="saveFilter">Save</p>
+            <p id="loadFilter">Load</p>
+        </div>
     </div>
 </body>
 
