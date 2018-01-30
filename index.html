@@ -199,60 +199,62 @@
     <div id="filterRelated">
         <!--<p id="logInFS">LOG IN</p>-->
         <div id="logInFS">
-        <img src="IMG/sc2.png" alt="log in" id="loginProfile2">
+            <img src="IMG/sc2.png" alt="log in" id="loginProfile2">
         </div>
-        <!--select filter preset dropdown, available filters, save as (prompt name), remove (prompt are you sure)-->
+        <!--select filter preset dropdown, available filters, save as (prompt name), delete (prompt are you sure)-->
         <!--        - Min. - max. time (e.g.: 10 - 25min old)
-- Max reward (e.g.: < 5 SBD)
-- Max earned in past X time: (e.g.: max earned 50 SBD over last 7 days)
-- Min - max reputation
-- Include tags with AND / OR queries e.g.: Travel OR (Photography AND nature)
-- Exclude tags with AND / OR queries
-- Word count?
-- Body contains
-- User
 TODO: SHOW ERRORS IF VALUES ARE NOT VALID!!!!
 Do we really need the AND / OR / () IN tags??
 -->
-        <select id="presets">
+        <div id="filterBody">
+            <select id="presets">
             <option id="selectPreset" value="" disabled selected>Select your filter preset</option>
-            <option>Test preset</option>
+            <!--<option id="newPreset">Create new</option>-->
         </select>
-        <p class="filterText2">Leave filter blank if you do not want to include it</p>
-        <!--<p class="filterText">Specific user</p>
+            <p class="filterText2">Leave filter blank if you do not want to include it</p>
+            <!--<p class="filterText">Specific user</p>
         <input id="specificUser" class="oneInput" placeholder="@username">-->
-        <p class="filterText">Time of post (min - max)</p>
-        <input id="minTime" class="twoInput twoFirst" placeholder="hhh:mm">
-        <p class="inputSplit">-</p><input id="maxTime" class="twoInput" placeholder="hhh:mm">
-        <p class="filterText">Post value (min - max)</p>
-        <input id="minValue" class="twoInput twoFirst" placeholder="SBD value">
-        <p class="inputSplit">-</p><input id="maxValue" class="twoInput" placeholder="SBD value">
-        <p class="filterText">Max earned over last X time</p>
-        <input id="totalReward" class="twoInput twoFirst" placeholder="SBD value">
-        <p class="inputSplit">-</p><input id="totalTime" class="twoInput" placeholder="hhh:mm">
-        <p class="filterText">Reputation (min - max)</p>
-        <input id="minRep" class="twoInput twoFirst" placeholder="Reputation">
-        <p class="inputSplit">-</p><input id="maxRep" class="twoInput" placeholder="Reputation">
-        <p class="filterText">Wordcount (min - max)</p>
-        <input id="minWC" class="twoInput twoFirst" placeholder="Wordcount">
-        <p class="inputSplit">-</p><input id="maxWC" class="twoInput" placeholder="Wordcount">
-        <p class="filterText">Post contains</p>
-        <input id="bodyContains" class="oneInput" placeholder="Word or sentence">
-        <p class="filterText">Include tags: AND / OR / ()</p>
-        <input id="includeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
-        <p class="filterText">Exclude tags: AND / OR / ()</p>
-        <input id="excludeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
-        <p class="filterText">Specific users</p>
-        <input id="specificUser" class="oneInput" placeholder="@username, @username,...">
-        <p class="filterText">Exclude specific users</p>
-        <input id="excludeSpecificUser" class="oneInput" placeholder="@username, @username,...">
-        <p class="filterText">Posts from group of users</p>
-        <input type="checkbox" class="groupCheck groupCheck1" id="followingInput" name="following" value="following"><label for="followingInput" class="groupLabel">following</label>
-        <input type="checkbox" id="curatingInput" class="groupCheck" name="curating" value="curating"><label for="curatingInput" class="groupLabel">curating</label>
-        <div id="spacingOut"></div>
+            <p class="filterText">Time of post (min - max)</p>
+            <input id="minTime" class="twoInput twoFirst" placeholder="hhh:mm">
+            <p class="inputSplit">-</p><input id="maxTime" class="twoInput" placeholder="hhh:mm">
+            <p class="filterText">Post value (min - max)</p>
+            <input id="minValue" class="twoInput twoFirst" placeholder="SBD value">
+            <p class="inputSplit">-</p><input id="maxValue" class="twoInput" placeholder="SBD value">
+            <p class="filterText">Max earned over last X time</p>
+            <input id="totalReward" class="twoInput twoFirst" placeholder="SBD value">
+            <p class="inputSplit">-</p><input id="totalTime" class="twoInput" placeholder="hhh:mm">
+            <p class="filterText">Reputation (min - max)</p>
+            <input id="minRep" class="twoInput twoFirst" placeholder="Reputation">
+            <p class="inputSplit">-</p><input id="maxRep" class="twoInput" placeholder="Reputation">
+            <p class="filterText">Wordcount (min - max)</p>
+            <input id="minWC" class="twoInput twoFirst" placeholder="Wordcount">
+            <p class="inputSplit">-</p><input id="maxWC" class="twoInput" placeholder="Wordcount">
+            <p class="filterText">Post contains</p>
+            <input id="bodyContains" class="oneInput" placeholder="Word or sentence">
+            <p class="filterText">Tags: AND / OR / ()</p>
+            <input id="includeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
+            <p class="filterText">Exclude tags: AND / OR / ()</p>
+            <input id="excludeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
+            <p class="filterText">Specific users</p>
+            <input id="specificUser" class="oneInput" placeholder="@username, @username,...">
+            <p class="filterText">Exclude specific users</p>
+            <input id="excludeSpecificUser" class="oneInput" placeholder="@username, @username,...">
+            <p class="filterText">Group of users</p>
+            <input type="checkbox" class="groupCheck groupCheck1" id="followingInput" name="following" value="following"><label for="followingInput" class="groupLabel">following</label>
+            <input type="checkbox" id="curatingInput" class="groupCheck" name="curating" value="curating"><label for="curatingInput" class="groupLabel">curating</label>
+            <p class="filterText">Sort posts</p>
+
+            <input type="radio" id="newToOld" class="groupCheck groupCheck1 sortCheck" name="sortPost" value="newToOld" checked><label for="newToOld" class="groupLabel">date asc</label>
+            <input type="radio" id="oldToNew" class="groupCheck sortCheck" name="sortPost" value="oldToNew"><label for="oldToNew" class="groupLabel">date desc</label><br>
+            <input type="radio" id="valueASC" class="groupCheck groupCheck1" name="sortPost" value="valueASC"><label for="valueASC" class="groupLabel">sbd asc &nbsp;</label>
+            <input type="radio" id="valueDESC" class="groupCheck" name="sortPost" value="valueDESC"><label for="valueDESC" class="groupLabel">sbd desc &nbsp;</label>
+
+            <div id="spacingOut"></div>
+        </div>
         <div id="saveLoad">
-            <p id="saveFilter">Save</p>
             <p id="loadFilter">Load</p>
+            <p id="saveFilter">Save</p>
+            <p id="delteFilter">Delete</p>
         </div>
     </div>
 </body>

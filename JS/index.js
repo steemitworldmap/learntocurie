@@ -105,6 +105,27 @@ $(document).ready(function () {
         $("#postRelated").stop().fadeIn();
         $("#filterRelated").stop().fadeOut();
     });
+    
+    $("#loadFilter").on('click', function(){
+        //change to total in miliseconds
+        var minTime;
+        var maxTime;
+        var minValue;
+        var maxValue;
+        var totalReward;
+        var totalTime;
+        var minWc;
+        var maxWc;
+        var postContains;
+        //Think more about the AND / OR / () as it might take too long  
+        var includeTags;
+        var excludeTags;
+        //array of users if following or curating is checked add to users
+        var users;
+        var excludeUsers;
+        var sortPost;
+        
+    });
 
 });
 
@@ -127,26 +148,30 @@ function changeMarkDownToHtml(a, b) {
     b.find('a').attr('target', '_blank');
 }
 
-function addValues() {
-    /*GET ALL RELEVANT DATA FOR FIRST POST
-    post
-    - time
-    - postvalue
-    - postupvotes
-    - times resteemed
-    - amount of comments
-    - postTitle
-    - postLink???
-    - postBody
-    logged in user
-    - upvoted
-    - resteemed
-    - commented
-    - following
-    - curating
-    */
-
+function addValues() {    
     //set these depending on post
+    
+    //construct exact time
+    var daysPassed;
+    var hoursPassed;
+    var minutesPassed;
+    
+    var sbdValue;
+    var upvotes;
+    var timesResteemed;
+    var totalComments;
+    
+    //can be used to costruct link to other frontend
+    var permLink; 
+    
+    var postTitle;
+    
+    //will need to be parsed through markdown converter
+    var postBody;
+    
+    var author;
+    var authorProfilePic;
+    
     var upvoted = false;
     var resteemed = false;
     var commented = false;
@@ -155,11 +180,15 @@ function addValues() {
     var converter = new showdown.Converter();
 
     changeMarkDownToHtml(converter, $("#postBody"));
-
+    
+    setStartingCssValues(upvoted, "#upvote");
+    setStartingCssValues(resteemed, "#resteem");
+    setStartingCssValues(commented, "#comment");
+    setStartingCssValues(following, "#follow");
+    setStartingCssValues(curating, "#curate");
 
     $("#upvote").click(function () {
         if (upvoted == false) {
-            /*$("#upvoteSliderDiv").stop().slideToggle(500);*/
             $("#upvote").css('color', '#50b5f4');
             $("#upvote").css('border', '3px solid #50b5f4');
             upvoted = true;
@@ -182,16 +211,7 @@ function addValues() {
             ')'
         );
     });
-
-    /*
-        $("#voteNow").click(function () {
-            $("#upvote").css('color', '#50b5f4');
-            $("#upvote").css('border', '3px solid #50b5f4');
-            $("#upvoteSliderDiv").stop().slideUp(500);
-            upvoted = true;
-        });
-    */
-
+    
     $("#resteem").click(function () {
         if (resteemed == false) {
             $("#resteem").css('color', '#50b5f4');
@@ -256,4 +276,11 @@ function getVotingPower(result, votingPower) {
     $("#progressbarInner").css('width', votingPower + "%");
     $("#vpPercentage").html(votingPower);
     console.log(votingPower);
+}
+
+function setStartingCssValues(a, b){
+    if(a == true){
+        $(b).css('color', '#50b5f4');
+        $(b).css('border', '3px solid #50b5f4');
+    }
 }
