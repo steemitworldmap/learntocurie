@@ -3,9 +3,6 @@ $(document).ready(function () {
         if (window.innerWidth >= 1023) {
             $("#postRelated").show();
             $("#filterRelated").show();
-        } else {
-            $("#postRelated").show();
-            $("#filterRelated").hide();
         }
     }
 
@@ -97,8 +94,8 @@ $(document).ready(function () {
     });
 
     $("#filtermenu").on('click', function () {
-        $("#postRelated").stop().fadeToggle();
-        $("#filterRelated").stop().fadeToggle();
+        $("#postRelated").stop().fadeOut();
+        $("#filterRelated").stop().fadeIn();
     });
 
     $("#home").on('click', function () {
