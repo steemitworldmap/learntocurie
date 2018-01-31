@@ -105,26 +105,153 @@ $(document).ready(function () {
         $("#postRelated").stop().fadeIn();
         $("#filterRelated").stop().fadeOut();
     });
-    
-    $("#loadFilter").on('click', function(){
-        //change to total in miliseconds
+
+    $("#loadFilter").on('click', function () {
+        var errors = "";
+        //change to timestamp in miliseconds
         var minTime;
         var maxTime;
         var minValue;
         var maxValue;
         var totalReward;
         var totalTime;
+        var minRep;
+        var maxRep;
         var minWc;
         var maxWc;
         var postContains;
         //Think more about the AND / OR / () as it might take too long  
-        var includeTags;
-        var excludeTags;
+        var includeTags = [];
+        var excludeTags = [];
         //array of users if following or curating is checked add to users
-        var users;
-        var excludeUsers;
+        var users = [];
+        var excludeUsers = [];
         var sortPost;
+
+        //TODO: set all variables underneath this comment
+        minTime = $("#minTime").val();
+        if (minTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
+            var minHours = minTime.split(':')[0];
+            var minMinutes = minTime.split(':')[1];
+            minTime = (minHours * 3600000) + (minMinutes * 60000);
+        } else {
+            if (minTime == "") {
+                minTime = 0;
+            } else {
+                errors = errors + "Min time is incorrect use hhh:mm \n";
+            }
+        }
+
+        maxTime = $("#maxTime").val();
+        if (maxTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
+            var maxHours = maxTime.split(':')[0];
+            var maxMinutes = maxTime.split(':')[1];
+            maxTime = (maxHours * 3600000) + (maxMinutes * 60000);
+            //max 7 days
+        } else {
+            if (maxTime == "") {
+                maxTime = 604800000;
+            } else {
+                errors = errors + "Max time is incorrect use hhh:mm\n";
+            }
+        }
+        if (maxTime > 604800000 || minTime > 604800000) {
+            errors = errors + "You can only go back 7 days\n"
+        }
+
+        if (minTime > maxTime) {
+            errors = errors + "Mintime is larger than maxtime\n"
+        }
+
+        minValue = $("#minValue").val();
+        if (minValue == "") {
+            minValue = 0;
+        } else {
+            minValue = minValue.toFixed(2);
+        }
+
+        maxValue = $("#maxValue").val();
+        if (maxValue == "") {
+            maxValue = 100000;
+        } else {
+            maxValue = maxValue.toFixed(2);
+        }
+
+        totalReward = $("#totalReward").val();
+        if (totalReward == "") {
+            totalReward = 1000000;
+        } else {
+            totalReward = totalReward.toFixed(2);
+        }
+
+        totalTime = $("#totalTime").val();
+        if (totalTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
+            var maxHoursT = totalTime.split(':')[0];
+            var maxMinutesT = totalTime.split(':')[1];
+            totalTime = (maxHoursT * 3600000) + (maxMinutesT * 60000);
+            //max 7 days
+        } else {
+            if (maxTime == "") {
+                maxTime = 604800000;
+            } else {
+                errors = errors + "Over X time is incorrect use hhh:mm\n";
+            }
+        }
         
+        minRep = $("#minRep").val();
+        if (minRep == "") {
+            minRep = 0;
+        } else {
+            minRep = minRep.toFixed(0);
+        }
+        
+        maxRep = $("#maxRep").val();
+        if (maxRep == "") {
+            maxRep = 250;
+        } else {
+            maxRep = maxRep.toFixed(0);
+        }
+        
+        minWc = $("#minWC").val();
+        if (minWc == "") {
+            minWc = 0;
+        } else {
+            minWc = minWc.toFixed(0);
+        }
+        
+        maxWc = $("#maxWC").val();
+        if (maxWc == "") {
+            maxWc = 1000000;
+        } else {
+            maxWc = maxWc.toFixed(0);
+        }
+        
+        //ignore whitespace? ignore caps?
+        postContains = $("#bodyContains").val();
+        
+        
+
+        if (errors == "") {
+            //create JSON
+            var myObject = new Object();
+            myObject.minTime = minTime;
+            myObject.maxTime = maxTime;
+            myObject.minValue = minValue;
+            myObject.maxValue = maxValue;
+            myObject.totalReward = totalReward;
+            myObject.totalTime = totalTime;
+            myObject.minWc = minWc;
+            myObject.maxWc = maxWc;
+            myObject.postContains = postContains;
+            myObject.includeTags = includeTags;
+            myObject.excludeTags = excludeTags;
+            myObject.users = users;
+            myObject.excludeUsers = excludeUsers;
+            myObject.sortPost = sortPost;
+        } else {
+            alert(errors);
+        }
+
     });
 
 });
@@ -148,30 +275,30 @@ function changeMarkDownToHtml(a, b) {
     b.find('a').attr('target', '_blank');
 }
 
-function addValues() {    
+function addValues() {
     //set these depending on post
-    
+
     //construct exact time
     var daysPassed;
     var hoursPassed;
     var minutesPassed;
-    
+
     var sbdValue;
     var upvotes;
     var timesResteemed;
     var totalComments;
-    
+
     //can be used to costruct link to other frontend
-    var permLink; 
-    
+    var permLink;
+
     var postTitle;
-    
+
     //will need to be parsed through markdown converter
     var postBody;
-    
+
     var author;
     var authorProfilePic;
-    
+
     var upvoted = false;
     var resteemed = false;
     var commented = false;
@@ -180,7 +307,7 @@ function addValues() {
     var converter = new showdown.Converter();
 
     changeMarkDownToHtml(converter, $("#postBody"));
-    
+
     setStartingCssValues(upvoted, "#upvote");
     setStartingCssValues(resteemed, "#resteem");
     setStartingCssValues(commented, "#comment");
@@ -211,7 +338,7 @@ function addValues() {
             ')'
         );
     });
-    
+
     $("#resteem").click(function () {
         if (resteemed == false) {
             $("#resteem").css('color', '#50b5f4');
@@ -278,8 +405,8 @@ function getVotingPower(result, votingPower) {
     console.log(votingPower);
 }
 
-function setStartingCssValues(a, b){
-    if(a == true){
+function setStartingCssValues(a, b) {
+    if (a == true) {
         $(b).css('color', '#50b5f4');
         $(b).css('border', '3px solid #50b5f4');
     }

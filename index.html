@@ -214,36 +214,37 @@ Do we really need the AND / OR / () IN tags??
             <p class="filterText2">Leave filter blank if you do not want to include it</p>
             <!--<p class="filterText">Specific user</p>
         <input id="specificUser" class="oneInput" placeholder="@username">-->
-            <p class="filterText">Time of post (min - max)</p>
+            <p class="filterText">Time of post (min - max) &lt; 168:00</p>
             <input id="minTime" class="twoInput twoFirst" placeholder="hhh:mm">
             <p class="inputSplit">-</p><input id="maxTime" class="twoInput" placeholder="hhh:mm">
             <p class="filterText">Post value (min - max)</p>
-            <input id="minValue" class="twoInput twoFirst" placeholder="SBD value">
-            <p class="inputSplit">-</p><input id="maxValue" class="twoInput" placeholder="SBD value">
-            <p class="filterText">Max earned over last X time</p>
-            <input id="totalReward" class="twoInput twoFirst" placeholder="SBD value">
+            <input id="minValue" type="number" step="0.01" min="0" class="twoInput twoFirst" placeholder="SBD value">
+            <p class="inputSplit">-</p><input id="maxValue" type="number" step="0.01" min="0" class="twoInput" placeholder="SBD value">
+            <p class="filterText">Max earned over last X time &lt; 168:00</p>
+            <input id="totalReward" type="number" step="0.01" min="0" class="twoInput twoFirst" placeholder="SBD value">
             <p class="inputSplit">-</p><input id="totalTime" class="twoInput" placeholder="hhh:mm">
             <p class="filterText">Reputation (min - max)</p>
-            <input id="minRep" class="twoInput twoFirst" placeholder="Reputation">
-            <p class="inputSplit">-</p><input id="maxRep" class="twoInput" placeholder="Reputation">
+            <input id="minRep" class="twoInput twoFirst" type="number" step="1" min="0" placeholder="Reputation">
+            <p class="inputSplit">-</p><input id="maxRep" type="number" step="1" min="0" class="twoInput" placeholder="Reputation">
             <p class="filterText">Wordcount (min - max)</p>
-            <input id="minWC" class="twoInput twoFirst" placeholder="Wordcount">
-            <p class="inputSplit">-</p><input id="maxWC" class="twoInput" placeholder="Wordcount">
+            <input id="minWC" type="number" step="1" min="0" class="twoInput twoFirst" placeholder="Wordcount">
+            <p class="inputSplit">-</p><input id="maxWC" type="number" step="1" min="0" class="twoInput" placeholder="Wordcount">
             <p class="filterText">Post contains</p>
             <input id="bodyContains" class="oneInput" placeholder="Word or sentence">
-            <p class="filterText">Tags: AND / OR / ()</p>
-            <input id="includeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
-            <p class="filterText">Exclude tags: AND / OR / ()</p>
-            <input id="excludeTags" class="oneInput" placeholder="E.g.: travel AND (surfing OR climbing)">
+            <p class="filterText">Tags:</p>
+            <input id="includeTags" class="oneInput" placeholder="Seperate tags by comma">
+            <p class="filterText">Exclude tags:</p>
+            <input id="excludeTags" class="oneInput" placeholder="Seperate tags by comma">
             <p class="filterText">Specific users</p>
             <input id="specificUser" class="oneInput" placeholder="@username, @username,...">
             <p class="filterText">Exclude specific users</p>
             <input id="excludeSpecificUser" class="oneInput" placeholder="@username, @username,...">
+            
             <p class="filterText">Group of users</p>
             <input type="checkbox" class="groupCheck groupCheck1" id="followingInput" name="following" value="following"><label for="followingInput" class="groupLabel">following</label>
             <input type="checkbox" id="curatingInput" class="groupCheck" name="curating" value="curating"><label for="curatingInput" class="groupLabel">curating</label>
+            
             <p class="filterText">Sort posts</p>
-
             <input type="radio" id="newToOld" class="groupCheck groupCheck1 sortCheck" name="sortPost" value="newToOld" checked><label for="newToOld" class="groupLabel">date asc</label>
             <input type="radio" id="oldToNew" class="groupCheck sortCheck" name="sortPost" value="oldToNew"><label for="oldToNew" class="groupLabel">date desc</label><br>
             <input type="radio" id="valueASC" class="groupCheck groupCheck1" name="sortPost" value="valueASC"><label for="valueASC" class="groupLabel">sbd asc &nbsp;</label>
