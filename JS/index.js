@@ -121,11 +121,11 @@ $(document).ready(function () {
         var maxWc;
         var postContains;
         //Think more about the AND / OR / () as it might take too long  
-        var includeTags = [];
-        var excludeTags = [];
+        var includeTags;
+        var excludeTags;
         //array of users if following or curating is checked add to users
-        var users = [];
-        var excludeUsers = [];
+        var users;
+        var excludeUsers;
         var sortPost;
 
         //TODO: set all variables underneath this comment
@@ -172,7 +172,7 @@ $(document).ready(function () {
 
         maxValue = $("#maxValue").val();
         if (maxValue == "") {
-            maxValue = 100000;
+            maxValue = 1000000;
         } else {
             maxValue = maxValue.toFixed(2);
         }
@@ -191,8 +191,8 @@ $(document).ready(function () {
             totalTime = (maxHoursT * 3600000) + (maxMinutesT * 60000);
             //max 7 days
         } else {
-            if (maxTime == "") {
-                maxTime = 604800000;
+            if (totalTime == "") {
+                totalTime = 604800000;
             } else {
                 errors = errors + "Over X time is incorrect use hhh:mm\n";
             }
@@ -229,8 +229,26 @@ $(document).ready(function () {
         //ignore whitespace? ignore caps?
         postContains = $("#bodyContains").val();
         
+        includeTags = $("#includeTags").val();
+        includeTags = includeTags.replace(/ /g, '');
+        includeTags = includeTags.split(",");
         
-
+        excludeTags = $("#excludeTags").val();
+        excludeTags = excludeTags.replace(/ /g, '');
+        excludeTags = excludeTags.split(",");
+        
+        users = $("#specificUser").val();
+        users = users.replace(/ /g, '');
+        users = users.replace(/@/g, '');
+        users = users.split(",");
+        
+        excludeUsers = $("#excludeSpecificUser").val();
+        excludeUsers = excludeUsers.replace(/ /g, '');
+        excludeUsers = excludeUsers.replace(/@/g, '');
+        excludeUsers = excludeUsers.split(",");
+        
+        sortPost = $('input[name=sortPost]:checked').val();
+            
         if (errors == "") {
             //create JSON
             var myObject = new Object();
@@ -248,6 +266,7 @@ $(document).ready(function () {
             myObject.users = users;
             myObject.excludeUsers = excludeUsers;
             myObject.sortPost = sortPost;
+            console.log(myObject);
         } else {
             alert(errors);
         }
@@ -391,8 +410,8 @@ function addValues() {
 function getVotingPower(result, votingPower) {
     var lastTimeVoted = new Date(result.account.last_vote_time.replace('T', ' '));
     var today = Date.now() + ((new Date().getTimezoneOffset()) * 60000);
-    console.log(lastTimeVoted);
-    console.log(today);
+    /*console.log(lastTimeVoted);
+    console.log(today);*/
     /*console.log(today - lastTimeVoted.getTime());
     console.log((today - lastTimeVoted.getTime())/4320000);*/
     var allVotingPower = ((result.account.voting_power / 100) + ((today - lastTimeVoted.getTime()) / 4320000)).toFixed(2);
