@@ -444,6 +444,8 @@ function getAllFilters() {
         getFollowing(loggedUsername, null, 100, users, function (s) {
             users = s;
         });
+    } else{
+        deferredFollowing.resolve();
     }
 
     sortPost = $('input[name=sortPost]:checked').val();

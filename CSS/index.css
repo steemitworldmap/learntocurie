@@ -584,7 +584,7 @@ i {
     width: calc(40% - 0.5em);
     display: inline-block;
     float: left;
-    border-radius: 5px;
+    border-radius: 3px;
     padding-left: 0.5em;
 }
 
@@ -596,7 +596,7 @@ i {
     width: calc(90% - 0.5em);
     margin-left: 5%;
     margin-right: 5%;
-    border-radius: 5px;
+    border-radius: 3px;
     padding-left: 0.5em;
 }
 
