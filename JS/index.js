@@ -1,3 +1,29 @@
+var loggedUsername;
+var votingPower;
+var steemconnect;
+var profilePicSrc;
+var deferredFollowing;
+var errors = "";
+//change to timestamp in miliseconds
+var minTime;
+var maxTime;
+var minValue;
+var maxValue;
+var totalReward;
+var totalTime;
+var minRep;
+var maxRep;
+var minWc;
+var maxWc;
+var postContains;
+//Think more about the AND / OR / () as it might take too long  
+var includeTags;
+var excludeTags;
+//array of users if following or curating is checked add to users
+var users;
+var excludeUsers;
+var sortPost;
+
 $(document).ready(function () {
     window.onresize = function () {
         if (window.innerWidth >= 1023) {
@@ -5,10 +31,6 @@ $(document).ready(function () {
             $("#filterRelated").show();
         }
     }
-
-    var votingPower;
-    var steemconnect;
-    var profilePicSrc;
 
     sc2.init({
         app: 'learntocurie',
@@ -28,6 +50,8 @@ $(document).ready(function () {
                 $("#loginProfile").attr("src", profilePicSrc);
                 $("#loginProfile2").attr("src", profilePicSrc);
                 $("#sc2Img").attr("src", profilePicSrc);
+                loggedUsername = result.user;
+                /*alert(result.user);*/
                 $("#loginButton").hide();
             } else {
                 $("#logoutButton").hide();
@@ -104,170 +128,7 @@ $(document).ready(function () {
     });
 
     $("#loadFilter").on('click', function () {
-        var errors = "";
-        //change to timestamp in miliseconds
-        var minTime;
-        var maxTime;
-        var minValue;
-        var maxValue;
-        var totalReward;
-        var totalTime;
-        var minRep;
-        var maxRep;
-        var minWc;
-        var maxWc;
-        var postContains;
-        //Think more about the AND / OR / () as it might take too long  
-        var includeTags;
-        var excludeTags;
-        //array of users if following or curating is checked add to users
-        var users;
-        var excludeUsers;
-        var sortPost;
-
-        //TODO: set all variables underneath this comment
-        minTime = $("#minTime").val();
-        if (minTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
-            var minHours = minTime.split(':')[0];
-            var minMinutes = minTime.split(':')[1];
-            minTime = (minHours * 3600000) + (minMinutes * 60000);
-        } else {
-            if (minTime == "") {
-                minTime = 0;
-            } else {
-                errors = errors + "Min time is incorrect use hhh:mm \n";
-            }
-        }
-
-        maxTime = $("#maxTime").val();
-        if (maxTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
-            var maxHours = maxTime.split(':')[0];
-            var maxMinutes = maxTime.split(':')[1];
-            maxTime = (maxHours * 3600000) + (maxMinutes * 60000);
-            //max 7 days
-        } else {
-            if (maxTime == "") {
-                maxTime = 604800000;
-            } else {
-                errors = errors + "Max time is incorrect use hhh:mm\n";
-            }
-        }
-        if (maxTime > 604800000 || minTime > 604800000) {
-            errors = errors + "You can only go back 7 days\n"
-        }
-
-        if (minTime > maxTime) {
-            errors = errors + "Mintime is larger than maxtime\n"
-        }
-
-        minValue = $("#minValue").val();
-        if (minValue == "") {
-            minValue = 0;
-        } else {
-            minValue = minValue.toFixed(2);
-        }
-
-        maxValue = $("#maxValue").val();
-        if (maxValue == "") {
-            maxValue = 1000000;
-        } else {
-            maxValue = maxValue.toFixed(2);
-        }
-
-        totalReward = $("#totalReward").val();
-        if (totalReward == "") {
-            totalReward = 1000000;
-        } else {
-            totalReward = totalReward.toFixed(2);
-        }
-
-        totalTime = $("#totalTime").val();
-        if (totalTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
-            var maxHoursT = totalTime.split(':')[0];
-            var maxMinutesT = totalTime.split(':')[1];
-            totalTime = (maxHoursT * 3600000) + (maxMinutesT * 60000);
-            //max 7 days
-        } else {
-            if (totalTime == "") {
-                totalTime = 604800000;
-            } else {
-                errors = errors + "Over X time is incorrect use hhh:mm\n";
-            }
-        }
-        
-        minRep = $("#minRep").val();
-        if (minRep == "") {
-            minRep = 0;
-        } else {
-            minRep = minRep.toFixed(0);
-        }
-        
-        maxRep = $("#maxRep").val();
-        if (maxRep == "") {
-            maxRep = 250;
-        } else {
-            maxRep = maxRep.toFixed(0);
-        }
-        
-        minWc = $("#minWC").val();
-        if (minWc == "") {
-            minWc = 0;
-        } else {
-            minWc = minWc.toFixed(0);
-        }
-        
-        maxWc = $("#maxWC").val();
-        if (maxWc == "") {
-            maxWc = 1000000;
-        } else {
-            maxWc = maxWc.toFixed(0);
-        }
-        
-        //ignore whitespace? ignore caps?
-        postContains = $("#bodyContains").val();
-        
-        includeTags = $("#includeTags").val();
-        includeTags = includeTags.replace(/ /g, '');
-        includeTags = includeTags.split(",");
-        
-        excludeTags = $("#excludeTags").val();
-        excludeTags = excludeTags.replace(/ /g, '');
-        excludeTags = excludeTags.split(",");
-        
-        users = $("#specificUser").val();
-        users = users.replace(/ /g, '');
-        users = users.replace(/@/g, '');
-        users = users.split(",");
-        
-        excludeUsers = $("#excludeSpecificUser").val();
-        excludeUsers = excludeUsers.replace(/ /g, '');
-        excludeUsers = excludeUsers.replace(/@/g, '');
-        excludeUsers = excludeUsers.split(",");
-        
-        sortPost = $('input[name=sortPost]:checked').val();
-            
-        if (errors == "") {
-            //create JSON
-            var myObject = new Object();
-            myObject.minTime = minTime;
-            myObject.maxTime = maxTime;
-            myObject.minValue = minValue;
-            myObject.maxValue = maxValue;
-            myObject.totalReward = totalReward;
-            myObject.totalTime = totalTime;
-            myObject.minWc = minWc;
-            myObject.maxWc = maxWc;
-            myObject.postContains = postContains;
-            myObject.includeTags = includeTags;
-            myObject.excludeTags = excludeTags;
-            myObject.users = users;
-            myObject.excludeUsers = excludeUsers;
-            myObject.sortPost = sortPost;
-            console.log(myObject);
-        } else {
-            alert(errors);
-        }
-
+        getAllFilters().then(createFilterJson(errors, minTime, maxTime, minValue, maxValue, totalReward, totalTime, minRep, maxRep, minWc, maxWc, postContains, includeTags, excludeTags, users, excludeUsers, sortPost));
     });
 
 });
@@ -425,5 +286,210 @@ function setStartingCssValues(a, b) {
     if (a == true) {
         $(b).css('color', '#50b5f4');
         $(b).css('border', '3px solid #50b5f4');
+    }
+}
+
+function getAllFilters() {
+    deferredFollowing = $.Deferred();
+    //TODO: set all variables underneath this comment
+    minTime = $("#minTime").val();
+    if (minTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
+        var minHours = minTime.split(':')[0];
+        var minMinutes = minTime.split(':')[1];
+        minTime = (minHours * 3600000) + (minMinutes * 60000);
+    } else {
+        if (minTime == "") {
+            minTime = 0;
+        } else {
+            errors = errors + "Min time is incorrect use hhh:mm \n";
+        }
+    }
+
+    maxTime = $("#maxTime").val();
+    if (maxTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
+        var maxHours = maxTime.split(':')[0];
+        var maxMinutes = maxTime.split(':')[1];
+        maxTime = (maxHours * 3600000) + (maxMinutes * 60000);
+        //max 7 days
+    } else {
+        if (maxTime == "") {
+            maxTime = 604800000;
+        } else {
+            errors = errors + "Max time is incorrect use hhh:mm\n";
+        }
+    }
+    if (maxTime > 604800000 || minTime > 604800000) {
+        errors = errors + "You can only go back 7 days\n"
+    }
+
+    if (minTime > maxTime) {
+        errors = errors + "Mintime is larger than maxtime\n"
+    }
+
+    minValue = $("#minValue").val();
+    if (minValue == "") {
+        minValue = 0;
+    } else {
+        minValue = minValue.toFixed(2);
+    }
+
+    maxValue = $("#maxValue").val();
+    if (maxValue == "") {
+        maxValue = 1000000;
+    } else {
+        maxValue = maxValue.toFixed(2);
+    }
+
+    totalReward = $("#totalReward").val();
+    if (totalReward == "") {
+        totalReward = 1000000;
+    } else {
+        totalReward = totalReward.toFixed(2);
+    }
+
+    totalTime = $("#totalTime").val();
+    if (totalTime.match(/^(\d)(\d)(\d)(:)(\d)(\d)$/g) != null) {
+        var maxHoursT = totalTime.split(':')[0];
+        var maxMinutesT = totalTime.split(':')[1];
+        totalTime = (maxHoursT * 3600000) + (maxMinutesT * 60000);
+        //max 7 days
+    } else {
+        if (totalTime == "") {
+            totalTime = 604800000;
+        } else {
+            errors = errors + "Over X time is incorrect use hhh:mm\n";
+        }
+    }
+
+    minRep = $("#minRep").val();
+    if (minRep == "") {
+        minRep = 0;
+    } else {
+        minRep = minRep.toFixed(0);
+    }
+
+    maxRep = $("#maxRep").val();
+    if (maxRep == "") {
+        maxRep = 250;
+    } else {
+        maxRep = maxRep.toFixed(0);
+    }
+
+    minWc = $("#minWC").val();
+    if (minWc == "") {
+        minWc = 0;
+    } else {
+        minWc = minWc.toFixed(0);
+    }
+
+    maxWc = $("#maxWC").val();
+    if (maxWc == "") {
+        maxWc = 1000000;
+    } else {
+        maxWc = maxWc.toFixed(0);
+    }
+
+    //ignore whitespace? ignore caps?
+    postContains = $("#bodyContains").val();
+
+    includeTags = $("#includeTags").val();
+    includeTags = includeTags.replace(/ /g, '');
+    includeTags = includeTags.toLowerCase();
+    includeTags = includeTags.split(",");
+
+    excludeTags = $("#excludeTags").val();
+    excludeTags = excludeTags.replace(/ /g, '');
+    excludeTags = excludeTags.toLowerCase();
+    excludeTags = excludeTags.split(",");
+
+    users = $("#specificUser").val();
+    users = users.replace(/ /g, '');
+    users = users.toLowerCase();
+    users = users.split(",");
+
+    var wrongInclude = 0;
+    if (users != "") {
+        for (i = 0; i < users.length; i++) {
+            if (users[i].match(/(@(?:[a-z]+))+/g) == null) {
+                wrongInclude++;
+            } else {
+                users[i] = users[i].replace(/@/g, '');
+            }
+        }
+    }
+    if (wrongInclude > 0) {
+        errors = errors + "The users you want to include are incorrect\n";
+    }
+
+    excludeUsers = $("#excludeSpecificUser").val();
+    excludeUsers = excludeUsers.replace(/ /g, '');
+    excludeUsers = excludeUsers.toLowerCase();
+    excludeUsers = excludeUsers.split(",");
+
+    var wrongExclude = 0;
+    if (excludeUsers != "") {
+        for (i = 0; i < excludeUsers.length; i++) {
+            if (excludeUsers[i].match(/(@(?:[a-z]+))+/g) == null) {
+                wrongExclude++;
+            } else {
+                excludeUsers[i] = excludeUsers[i].replace(/@/g, '');
+            }
+        }
+    }
+    if (wrongExclude > 0) {
+        errors = errors + "The users you want to exclude are incorrect\n";
+    }
+
+    if ($("#followingInput").is(':checked')) {
+        getFollowing(loggedUsername, null, 100, users, function (s) {
+            users = s;
+        });
+    }
+
+    sortPost = $('input[name=sortPost]:checked').val();
+    return deferredFollowing.promise();
+}
+
+function getFollowing(loggedInUser, lastCheckedUser, totalResults, allUsers, callback) {
+    if (totalResults == 100) {
+        steem.api.getFollowing(loggedInUser, lastCheckedUser, null, 100, function (err, result) {
+            console.log(err, result);
+            for (var i = 0; i < result.length; i++) {
+                allUsers.push(result[i].following);
+            }
+            if (result.length == 100) {
+                getFollowing(loggedInUser, result[99].following, result.length, allUsers);
+            } else {
+                callback(allUsers);
+                deferredFollowing.resolve();
+            }
+        });
+    }
+}
+
+/*errors, minTime, maxTime, minValue, maxValue, totalReward, totalTime, minRep, maxRep, minWc, maxWc, postContains, includeTags, excludeTags, users, excludeUsers, sortPost*/
+function createFilterJson(errorsR, minTimeR, maxTimeR, minValueR, maxValueR, totalRewardR, totalTimeR, minRepR, maxRepR, minWcR, maxWcR, postContainsR, includeTagsR, excludeTagsR, usersR, excludeUsersR, sortPostR) {
+    if (errorsR == "") {
+        //create JSON
+        var myObject = new Object();
+        myObject.minTime = minTimeR;
+        myObject.maxTime = maxTimeR;
+        myObject.minValue = minValueR;
+        myObject.maxValue = maxValueR;
+        myObject.totalReward = totalRewardR;
+        myObject.totalTime = totalTimeR;
+        myObject.minRep = minRepR;
+        myObject.maxRep = maxRepR;
+        myObject.minWc = minWcR;
+        myObject.maxWc = maxWcR;
+        myObject.postContains = postContainsR;
+        myObject.includeTags = includeTagsR;
+        myObject.excludeTags = excludeTagsR;
+        myObject.users = usersR;
+        myObject.excludeUsers = excludeUsersR;
+        myObject.sortPost = sortPostR;
+        console.log(myObject);
+    } else {
+        alert(errors);
     }
 }

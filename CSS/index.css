@@ -543,13 +543,14 @@ i {
 }
 
 #presets {
-    width: 90%;
+    width: calc(90% - 0.5em);
     margin-left: 5%;
     margin-right: 5%;
     line-height: 1.5em;
     height: 2em;
     margin-top: 0.7em;
     font-size: 0.7em;
+    padding-left: 0.5em;
 }
 
 #presets:disabled {
@@ -580,9 +581,11 @@ i {
 
 
 .twoInput {
-    width: 40%;
+    width: calc(40% - 0.5em);
     display: inline-block;
     float: left;
+    border-radius: 5px;
+    padding-left: 0.5em;
 }
 
 .twoFirst {
@@ -590,9 +593,11 @@ i {
 }
 
 .oneInput {
-    width: 90%;
+    width: calc(90% - 0.5em);
     margin-left: 5%;
     margin-right: 5%;
+    border-radius: 5px;
+    padding-left: 0.5em;
 }
 
 .inputSplit {
